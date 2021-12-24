@@ -24,9 +24,6 @@
 #include "keymap.h"
 
 enum layers {
-    // BASE,  // default layer
-    // SYMB,  // symbols
-    // MDIA,  // media keys
     _COLEMAK_DH = 0,
     _QWERTY,
     _SYM,
@@ -56,19 +53,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_NO,            KC_NO,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
         KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_HYPR,          KC_MEH,   KC_M,    KC_N,    KC_E,    KC_I,    KC_OC,   KC_QUOT,
         OSM(MOD_LSFT), KC_Z, KC_X, KC_C,    KC_D,    KC_V,                                KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, OSM(MOD_RSFT),
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   NAV,     LGUI(KC_SPC),              RGUI(LALT(KC_BSLS), SYM,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   NAV,       LGUI(KC_SPC),            RGUI(LALT(KC_BSLS), SYM,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                             KC_SPC,  KC_BSPC, DIVVY,            ADJUST,   KC_TAB,  KC_ENT
     ),
 
-    [BASE] = LAYOUT_moonlander(
+    [_QWERTY] = LAYOUT_moonlander(
         _______,  _______,  _______,  _______,  _______,  _______,  _______,         KC_RGHT,  _______,  _______,  _______,  _______,  _______,  _______,
         _______,  _______,  _______,  KC_E,     KC_R,     KC_T,     _______,         _______,  KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     _______,
         _______,  _______,  KC_S,     KC_D,     KC_F,     _______,  _______,         _______,  KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  _______,
         _______,  _______,  _______,  _______,  KC_V,     KC_B,                                KC_N,     KC_M,     _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,  _______,                             _______,  _______,  _______,  _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,            _______,         _______,            _______,  _______,  _______,  _______,  _______,
                                                 _______,  _______,  _______,         _______,  _______,  _______,
     ),
 
+    [_SYM] = LAYOUT_moonlander(
+        VRSN,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,           _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
+        _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, _______,           _______, KC_UP,   KC_7,    KC_8,    KC_9,    KC_ASTR, KC_F12,
+        _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  _______,           _______, KC_DOWN, KC_4,    KC_5,    KC_6,    KC_PLUS, _______,
+        _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD,                             KC_AMPR, KC_1,    KC_2,    KC_3,    KC_BSLS, _______,
+        EEP_RST, _______, _______, _______, _______,          RGB_VAI,           RGB_TOG,          _______, KC_DOT,  KC_0,    KC_EQL,  _______,
+                                            RGB_HUD, RGB_VAD, RGB_HUI,           TOGGLE_LAYER_COLOR,_______, _______
+    ),
+
+    [_WINMGMT] = LAYOUT_moonlander(
+        _______, _______, _______, _______, _______, _______, _______,           _______, _______,                  _______,                _______,                _______,                _______,                _______,
+        _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______, _______,           _______, _______,                  LALT(RCTL(RSFT(KC_U))), LALT(RCTL(RSFT(KC_I))), LALT(RCTL(RSFT(KC_O))), _______,                _______,
+        _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,           _______, LALT(RCTL(RSFT(KC_H))),   LALT(RCTL(RSFT(KC_J))), LALT(RCTL(RSFT(KC_J))), LALT(RCTL(RSFT(KC_K))), LALT(RCTL(RSFT(KC_L))), _______,
+        _______, _______, _______, _______, _______, _______,                             _______,                  LALT(RCTL(RSFT(KC_M))), LALT(RCTL(RSFT(KC_,))), LALT(RCTL(RSFT(KC_.))), _______,                _______,
+        _______, _______, _______, _______, _______,          _______,           _______,                           _______, _______, _______, _______, _______,
+                                            _______, _______, _______,           _______, _______, _______
+    ),
+
+    // TODO: Redefine the divvy shortcuts above
+    [_ADJUST] = LAYOUT_moonlander(
+        WEBUSB_PAIR,_______,_______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______, RESET,
+        _______, _______, _______,   QWERTY,  _______, _______, _______,           _______, _______, RGB_VAI, RGB_VAD, _______, _______, _______,
+        _______, _______, _______,   COLEMAK, _______, _______, _______,           _______, _______, KC_BRIU, KC_BRID, _______, _______, _______,
+        _______, _______, _______,   _______, _______, _______,                             _______, _______, _______, _______, _______, _______,
+        _______, _______, _______,   _______, _______,          _______,           _______,          _______, _______, _______, _______, _______,
+                                              _______, _______, _______,           _______, _______, _______
+    ),
+
+    // Original layout from default keymap
     // [BASE] = LAYOUT_moonlander(
     //     KC_EQL,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_LEFT,           KC_RGHT, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
     //     KC_DEL,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    TG(SYMB),         TG(SYMB), KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
@@ -171,6 +197,46 @@ void process_caps_word(uint16_t keycode, const keyrecord_t *record) {
     }
 }
 
+uint16_t last_keycode = KC_NO;
+uint8_t last_modifier = 0;
+void process_repeat_key(uint16_t keycode, const keyrecord_t *record) {
+    if (keycode != REPEAT) {
+        // Early return when holding down a pure layer key
+        // to retain modifiers
+        switch (keycode) {
+            case QK_DEF_LAYER ... QK_DEF_LAYER_MAX:
+            case QK_MOMENTARY ... QK_MOMENTARY_MAX:
+            case QK_LAYER_MOD ... QK_LAYER_MOD_MAX:
+            case QK_ONE_SHOT_LAYER ... QK_ONE_SHOT_LAYER_MAX:
+            case QK_TOGGLE_LAYER ... QK_TOGGLE_LAYER_MAX:
+            case QK_TO ... QK_TO_MAX:
+            case QK_LAYER_TAP_TOGGLE ... QK_LAYER_TAP_TOGGLE_MAX:
+                return;
+        }
+        last_modifier = oneshot_mod_state > mod_state ? oneshot_mod_state : mod_state;
+        switch (keycode) {
+            case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+                if (record->event.pressed) {
+                    last_keycode = GET_TAP_KC(keycode);
+                }
+                break;
+            default:
+                if (record->event.pressed) {
+                    last_keycode = keycode;
+                }
+                break;
+        }
+    } else { // keycode == REPEAT
+        if (record->event.pressed) {
+            register_mods(last_modifier);
+            register_code16(last_keycode);
+        } else {
+            unregister_code16(last_keycode);
+            unregister_mods(last_modifier);
+        }
+    }
+}
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
@@ -195,6 +261,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 }
+
+#ifdef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            // Immediately select the hold action when another key is pressed.
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
+    }
+}
+#endif
 
 /*
  * Per key tapping term settings

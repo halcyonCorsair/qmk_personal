@@ -27,9 +27,10 @@
 #define TAPPING_FORCE_HOLD_PER_KEY
 
 // Disable PERMISSIVE_HOLD
-// (It's enabled dy default for all Dactyl Manuform boards,
-// so it requires explicit undef to disable)
 #undef PERMISSIVE_HOLD
+
+// Other settings //
+#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 // Recommended for heavy chording.
 #define QMK_KEYS_PER_SCAN 4
