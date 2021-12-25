@@ -34,6 +34,8 @@
 // Other settings //
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
+#define TAPPING_TOGGLE 1
+
 // Recommended for heavy chording.
 #define QMK_KEYS_PER_SCAN 4
 
