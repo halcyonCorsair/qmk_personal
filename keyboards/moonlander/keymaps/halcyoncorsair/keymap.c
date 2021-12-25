@@ -277,6 +277,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case HOME_A:
             return TAPPING_TERM + 40;
         case HOME_R:
+        case HOME_O:
         case QHOME_S:
             return TAPPING_TERM + 30;
         // case SYM_ENT:
