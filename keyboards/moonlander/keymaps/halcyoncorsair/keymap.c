@@ -251,6 +251,44 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
+
+        // symbol mod taps
+        case LALT_T(KC_PIPE):
+            if (record->tap.count) {
+                tap_code16(KC_PIPE); // Send KC_PIPE on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case LGUI_T(KC_LCBR):
+            if (record->tap.count) {
+                tap_code16(KC_LCBR); // Send KC_LCBR on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case LSFT_T(KC_LPRN):
+            if (record->tap.count) {
+                tap_code16(KC_LPRN); // Send KC_LPRN on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case RSFT_T(KC_DLR):
+            if (record->tap.count) {
+                tap_code16(KC_DLR); // Send KC_DLR on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case RGUI_T(KC_PERC):
+            if (record->tap.count) {
+                tap_code16(KC_PERC); // Send KC_PERC on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case LALT_T(KC_CIRC):
+            if (record->tap.count) {
+                tap_code16(KC_CIRC); // Send KC_CIRC on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
         }
     }
     return true;
