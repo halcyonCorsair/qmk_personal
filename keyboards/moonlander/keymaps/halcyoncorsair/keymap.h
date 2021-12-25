@@ -23,9 +23,14 @@ enum layers {
     _ADJUST,
 };
 
-// Aliases for readability
+// Layer aliases for readability
 #define QWERTY   DF(_QWERTY)
 #define COLEMAK  DF(_COLEMAK_DH)
+#define SYM      MO(_SYM)
+#define NAV      MO(_NAV)
+#define NUM      MO(_NUM)
+#define DIVVY    MO(_WINMGMT)
+#define ADJUST   MO(_ADJUST)
 
 // Colemak-dh
 // Left-hand home row mods
@@ -77,9 +82,30 @@ enum layers {
 #define HOME_6 LALT_T(KC_6)
 // #define HOME_ RCTL_T(KC_) - MINS
 
+
 // One Shot Shifts
 #define OS_LSFT OSM(MOD_LSFT)
 #define OS_RSFT OSM(MOD_RSFT)
+
+// Movement
+#define MHOME RGUI(KC_LEFT)
+#define MEND RGUI(KC_RIGHT)
+
+// App shortcuts
+#define SPOTLIGHT LGUI(KC_SPC)
+#define ONEPASS RGUI(LALT(KC_BSLS))
+#define DIVVY_U LALT(RCTL(RSFT(KC_U)))
+#define DIVVY_I LALT(RCTL(RSFT(KC_I)))
+#define DIVVY_O LALT(RCTL(RSFT(KC_O)))
+#define DIVVY_H LALT(RCTL(RSFT(KC_H)))
+#define DIVVY_J LALT(RCTL(RSFT(KC_J)))
+#define DIVVY_J LALT(RCTL(RSFT(KC_J)))
+#define DIVVY_K LALT(RCTL(RSFT(KC_K)))
+#define DIVVY_L LALT(RCTL(RSFT(KC_L)))
+#define DIVVY_M LALT(RCTL(RSFT(KC_M)))
+#define DIVVY_COMMA LALT(RCTL(RSFT(KC_COMMA)))
+#define DIVVY_DOT LALT(RCTL(RSFT(KC_DOT)))
+
 
 enum custom_keycodes {
     REPEAT,

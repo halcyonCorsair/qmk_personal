@@ -17,21 +17,10 @@
  */
 
 
-
 #include QMK_KEYBOARD_H
 #include "version.h"
-
+// #include "quantum_keycodes.h"
 #include "keymap.h"
-
-// Aliases for readability
-#define QWERTY   DF(_QWERTY)
-#define COLEMAK  DF(_COLEMAK_DH)
-
-#define SYM      MO(_SYM)
-#define NAV      MO(_NAV)
-#define NUM      MO(_NUM)
-#define DIVVY    MO(_WINMGMT)
-#define ADJUST   MO(_ADJUST)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -39,9 +28,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    ADJUST,           QWERTY,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_NO,
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_NO,            KC_NO,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
         KC_ESC,  HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_G,    KC_HYPR,          KC_MEH,   KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
-        OSM(MOD_LSFT), KC_Z, KC_X, KC_C,    KC_D,    KC_V,                                KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, OSM(MOD_RSFT),
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   NAV,       LGUI(KC_SPC),            RGUI(LALT(KC_BSLS)), SYM,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
-                                            KC_SPC,  KC_BSPC, DIVVY,            ADJUST,   KC_TAB,  KC_ENT
+        OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                                KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, OS_RSFT,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   NAV,           SPOTLIGHT,           ONEPASS,           SYM,     KC_NO,   KC_NO,   KC_NO,   KC_NO,
+                                             KC_SPC,  KC_BSPC, DIVVY,           ADJUST,   KC_TAB,  KC_ENT
     ),
 
     [_QWERTY] = LAYOUT_moonlander(
@@ -58,16 +47,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_EXLM,   KC_AT,     KC_SCLN,   KC_COLN,   KC_UNDS, _______,          _______, KC_EQL,  KC_AMPR,   KC_GRAVE,   KC_TILD,    KC_PLUS,   _______,
         _______, HOME_BSLS, HOME_PIPE, HOME_LCBR, HOME_LPRN, KC_LBRC, _______,          _______, KC_ASTR, HOME_DLR,  HOME_PERC,  HOME_CIRC,  HOME_MINS, _______,
         _______, KC_TILD,   KC_GRAVE,  KC_RCBR,   KC_RPRN,   KC_RBRC,                            KC_AMPR, KC_EXLM,   KC_AT,      KC_HASH,    _______,   _______,
-        _______, _______,   _______,   _______,   MO(_NUM),           _______,          _______,          _______,   _______,    _______,    _______,   _______,
+        _______, _______,   _______,   _______,   NUM,                _______,          _______,          _______,   _______,    _______,    _______,   _______,
                                                   _______,   KC_DEL,  _______,          _______, _______, _______
     ),
 
     [_NAV] = LAYOUT_moonlander(
         _______, _______, _______, _______, _______, _______, _______,           _______, _______, _______,       _______,   _______,        _______, _______,
-        _______, _______, _______, _______, _______, _______, _______,           _______, KC_PGUP, RGUI(KC_LEFT), KC_UP,     RGUI(KC_RIGHT), KC_VOLU, KC_DEL,
+        _______, _______, _______, _______, _______, _______, _______,           _______, KC_PGUP, MHOME,         KC_UP,     MEND,           KC_VOLU, KC_DEL,
         _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, _______, _______,           _______, KC_PGDN, KC_LEFT,       KC_DOWN,   KC_RIGHT,       KC_VOLD, KC_LCAP,
         _______, _______, _______, _______, _______, _______,                             KC_NO,   KC_MPRV,       KC_MPLY,   KC_MNXT,        KC_MUTE, KC_INS,
-        _______, _______, _______, _______, _______,          _______,           _______,          MO(_NUM),      _______,   _______,        _______, _______,
+        _______, _______, _______, _______, _______,          _______,           _______,          NUM,           _______,   _______,        _______, _______,
                                             _______, _______, _______,           _______, _______, _______
     ),
 
@@ -81,11 +70,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     [_WINMGMT] = LAYOUT_moonlander(
-        _______, _______, _______, _______, _______, _______, _______,           _______, _______,                  _______,                _______,                _______,                _______,                _______,
-        _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______, _______,           _______, _______,                  LALT(RCTL(RSFT(KC_U))), LALT(RCTL(RSFT(KC_I))), LALT(RCTL(RSFT(KC_O))), _______,                _______,
-        _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,           _______, LALT(RCTL(RSFT(KC_H))),   LALT(RCTL(RSFT(KC_J))), LALT(RCTL(RSFT(KC_J))), LALT(RCTL(RSFT(KC_K))), LALT(RCTL(RSFT(KC_L))), _______,
-        _______, _______, _______, _______, _______, _______,                             _______,                  LALT(RCTL(RSFT(KC_M))), LALT(RCTL(RSFT(KC_COMMA))), LALT(RCTL(RSFT(KC_DOT))), _______,                _______,
-        _______, _______, _______, _______, _______,          _______,           _______,                           _______, _______, _______, _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______,     _______,   _______, _______,
+        _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______, _______,           _______, _______, DIVVY_U, DIVVY_I,     DIVVY_O,   _______, _______,
+        _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,           _______, DIVVY_H, DIVVY_J, DIVVY_J,     DIVVY_K,   DIVVY_L, _______,
+        _______, _______, _______, _______, _______, _______,                             _______, DIVVY_M, DIVVY_COMMA, DIVVY_DOT, _______, _______,
+        _______, _______, _______, _______, _______,          _______,           _______,          _______, _______,     _______,   _______, _______,
                                             _______, _______, _______,           _______, _______, _______
     ),
 
@@ -286,6 +275,9 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HOME_A:
+            return TAPPING_TERM + 40;
+        case HOME_R:
+        case QHOME_S:
             return TAPPING_TERM + 30;
         // case SYM_ENT:
         //     // Very low tapping term to make sure I don't hit Enter accidentally.
