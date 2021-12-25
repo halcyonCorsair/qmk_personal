@@ -25,11 +25,11 @@
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK_DH] = LAYOUT_moonlander(
-        KC_NO,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    ADJUST,           QWERTY,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_NO,
-        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_NO,            KC_NO,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
+        XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    ADJUST,           QWERTY,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
+        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    XXXXXXX,          XXXXXXX,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
         KC_ESC,  HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_G,    KC_HYPR,          KC_MEH,   KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
         OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                                KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, OS_RSFT,
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   NAV,           SPOTLIGHT,           ONEPASS,           SYM,     KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NAV,           SPOTLIGHT,           ONEPASS,           SYM,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                              KC_SPC,  KC_BSPC, DIVVY,           ADJUST,   KC_TAB,  KC_ENT
     ),
 
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______,           _______, _______, _______,       _______,   _______,        _______, _______,
         _______, _______, _______, _______, _______, _______, _______,           _______, KC_PGUP, MHOME,         KC_UP,     MEND,           KC_VOLU, KC_DEL,
         _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, _______, _______,           _______, KC_PGDN, KC_LEFT,       KC_DOWN,   KC_RIGHT,       KC_VOLD, KC_LCAP,
-        _______, _______, _______, _______, _______, _______,                             KC_NO,   KC_MPRV,       KC_MPLY,   KC_MNXT,        KC_MUTE, KC_INS,
+        _______, _______, _______, _______, _______, _______,                             XXXXXXX, KC_MPRV,       KC_MPLY,   KC_MNXT,        KC_MUTE, KC_INS,
         _______, _______, _______, _______, _______,          _______,           _______,          NUM,           _______,   _______,        _______, _______,
                                             _______, _______, _______,           _______, _______, _______
     ),
@@ -191,7 +191,7 @@ void process_caps_word(uint16_t keycode, const keyrecord_t *record) {
     }
 }
 
-uint16_t last_keycode = KC_NO;
+uint16_t last_keycode = XXXXXXX;
 uint8_t last_modifier = 0;
 void process_repeat_key(uint16_t keycode, const keyrecord_t *record) {
     if (keycode != REPEAT) {
