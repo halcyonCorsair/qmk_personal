@@ -27,7 +27,7 @@ enum layers {
 #define QWERTY   DF(_QWERTY)
 #define COLEMAK  DF(_COLEMAK_DH)
 #define SYM      MO(_SYM)
-#define NAV      MO(_NAV)
+#define NAV      TT(_NAV)
 #define NUM      MO(_NUM)
 #define DIVVY    MO(_WINMGMT)
 #define ADJUST   MO(_ADJUST)
