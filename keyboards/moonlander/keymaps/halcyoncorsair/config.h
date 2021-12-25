@@ -18,6 +18,8 @@
 
 #pragma once
 
+#define ORYX_CONFIGURATOR
+
 #define TAPPING_TERM_PER_KEY // See bottom of keymap.c
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
