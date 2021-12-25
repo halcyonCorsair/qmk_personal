@@ -23,15 +23,6 @@
 
 #include "keymap.h"
 
-enum layers {
-    _COLEMAK_DH = 0,
-    _QWERTY,
-    _SYM,
-    _NAV,
-    _NUM,
-    _ADJUST,
-};
-
 // Aliases for readability
 #define QWERTY   DF(_QWERTY)
 #define COLEMAK  DF(_COLEMAK_DH)
@@ -42,44 +33,58 @@ enum layers {
 #define DIVVY    MO(_WINMGMT)
 #define ADJUST   MO(_ADJUST)
 
-// enum custom_keycodes {
-//     VRSN = ML_SAFE_RANGE,
-// };
-
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK_DH] = LAYOUT_moonlander(
         KC_NO,   KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    ADJUST,           QWERTY,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_NO,
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    KC_NO,            KC_NO,    KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
-        KC_ESC,  KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_HYPR,          KC_MEH,   KC_M,    KC_N,    KC_E,    KC_I,    KC_OC,   KC_QUOT,
+        KC_ESC,  HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_G,    KC_HYPR,          KC_MEH,   KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
         OSM(MOD_LSFT), KC_Z, KC_X, KC_C,    KC_D,    KC_V,                                KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, OSM(MOD_RSFT),
-        KC_NO,   KC_NO,   KC_NO,   KC_NO,   NAV,       LGUI(KC_SPC),            RGUI(LALT(KC_BSLS), SYM,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        KC_NO,   KC_NO,   KC_NO,   KC_NO,   NAV,       LGUI(KC_SPC),            RGUI(LALT(KC_BSLS)), SYM,    KC_NO,   KC_NO,   KC_NO,   KC_NO,
                                             KC_SPC,  KC_BSPC, DIVVY,            ADJUST,   KC_TAB,  KC_ENT
     ),
 
     [_QWERTY] = LAYOUT_moonlander(
-        _______,  _______,  _______,  _______,  _______,  _______,  _______,         KC_RGHT,  _______,  _______,  _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  KC_E,     KC_R,     KC_T,     _______,         _______,  KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,     _______,
-        _______,  _______,  KC_S,     KC_D,     KC_F,     _______,  _______,         _______,  KC_H,     KC_J,     KC_K,     KC_L,     KC_SCLN,  _______,
-        _______,  _______,  _______,  _______,  KC_V,     KC_B,                                KC_N,     KC_M,     _______,  _______,  _______,  _______,
-        _______,  _______,  _______,  _______,  _______,            _______,         _______,            _______,  _______,  _______,  _______,  _______,
-                                                _______,  _______,  _______,         _______,  _______,  _______,
+        _______,  _______,  _______,  _______,  _______,  _______,  _______,         _______,  _______,  _______,  _______,  _______,  _______,    _______,
+        _______,  _______,  _______,  KC_E,     KC_R,     KC_T,     _______,         _______,  KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,       _______,
+        _______,  _______,  QHOME_S,  QHOME_D,  QHOME_F,  _______,  _______,         _______,  KC_H,     QHOME_J,  QHOME_K,  QHOME_L,  QHOME_SCLN, _______,
+        _______,  _______,  _______,  _______,  KC_V,     KC_B,                                KC_N,     KC_M,     _______,  _______,  _______,    _______,
+        _______,  _______,  _______,  _______,  _______,            _______,         _______,            _______,  _______,  _______,  _______,    _______,
+                                                _______,  _______,  _______,         _______,  _______,  _______
     ),
 
     [_SYM] = LAYOUT_moonlander(
-        VRSN,    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   _______,           _______, KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-        _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE, _______,           _______, KC_UP,   KC_7,    KC_8,    KC_9,    KC_ASTR, KC_F12,
-        _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,  _______,           _______, KC_DOWN, KC_4,    KC_5,    KC_6,    KC_PLUS, _______,
-        _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD,                             KC_AMPR, KC_1,    KC_2,    KC_3,    KC_BSLS, _______,
-        EEP_RST, _______, _______, _______, _______,          RGB_VAI,           RGB_TOG,          _______, KC_DOT,  KC_0,    KC_EQL,  _______,
-                                            RGB_HUD, RGB_VAD, RGB_HUI,           TOGGLE_LAYER_COLOR,_______, _______
+        VRSN,    _______,   _______,   _______,   _______,   _______, _______,          _______, _______, _______,   _______,    _______,    _______,   _______,
+        _______, KC_EXLM,   KC_AT,     KC_SCLN,   KC_COLN,   KC_UNDS, _______,          _______, KC_EQL,  KC_AMPR,   KC_GRAVE,   KC_TILD,    KC_PLUS,   _______,
+        _______, HOME_BSLS, HOME_PIPE, HOME_LCBR, HOME_LPRN, KC_LBRC, _______,          _______, KC_ASTR, HOME_DLR,  HOME_PERC,  HOME_CIRC,  HOME_MINS, _______,
+        _______, KC_TILD,   KC_GRAVE,  KC_RCBR,   KC_RPRN,   KC_RBRC,                            KC_AMPR, KC_EXLM,   KC_AT,      KC_HASH,    _______,   _______,
+        _______, _______,   _______,   _______,   MO(_NUM),           _______,          _______,          _______,   _______,    _______,    _______,   _______,
+                                                  _______,   KC_DEL,  _______,          _______, _______, _______
+    ),
+
+    [_NAV] = LAYOUT_moonlander(
+        _______, _______, _______, _______, _______, _______, _______,           _______, _______, _______,       _______,   _______,        _______, _______,
+        _______, _______, _______, _______, _______, _______, _______,           _______, KC_PGUP, RGUI(KC_LEFT), KC_UP,     RGUI(KC_RIGHT), KC_VOLU, KC_DEL,
+        _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, _______, _______,           _______, KC_PGDN, KC_LEFT,       KC_DOWN,   KC_RIGHT,       KC_VOLD, KC_LCAP,
+        _______, _______, _______, _______, _______, _______,                             KC_NO,   KC_MPRV,       KC_MPLY,   KC_MNXT,        KC_MUTE, KC_INS,
+        _______, _______, _______, _______, _______,          _______,           _______,          MO(_NUM),      _______,   _______,        _______, _______,
+                                            _______, _______, _______,           _______, _______, _______
+    ),
+
+    [_NUM] = LAYOUT_moonlander(
+        _______, _______, _______, _______, _______, _______, _______,           _______, _______, _______, _______, _______, _______,   _______,
+        _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______,           _______, KC_EQL,  KC_7,    KC_8,    KC_9,    KC_PLUS,   KC_BSPC,
+        _______, HOME_F5, HOME_F6, HOME_F7, HOME_F8, _______, _______,           _______, KC_ASTR, HOME_4,  HOME_5,  HOME_6,  HOME_MINS, _______,
+        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______,                             KC_0,    KC_1,    KC_2,    KC_3,    KC_SLSH,   _______,
+        _______, _______, _______, _______, _______,          _______,           _______,          _______, _______, KC_DOT,  _______,   _______,
+                                            _______, _______, _______,           _______, _______, _______
     ),
 
     [_WINMGMT] = LAYOUT_moonlander(
         _______, _______, _______, _______, _______, _______, _______,           _______, _______,                  _______,                _______,                _______,                _______,                _______,
         _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______, _______,           _______, _______,                  LALT(RCTL(RSFT(KC_U))), LALT(RCTL(RSFT(KC_I))), LALT(RCTL(RSFT(KC_O))), _______,                _______,
         _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______, _______,           _______, LALT(RCTL(RSFT(KC_H))),   LALT(RCTL(RSFT(KC_J))), LALT(RCTL(RSFT(KC_J))), LALT(RCTL(RSFT(KC_K))), LALT(RCTL(RSFT(KC_L))), _______,
-        _______, _______, _______, _______, _______, _______,                             _______,                  LALT(RCTL(RSFT(KC_M))), LALT(RCTL(RSFT(KC_,))), LALT(RCTL(RSFT(KC_.))), _______,                _______,
+        _______, _______, _______, _______, _______, _______,                             _______,                  LALT(RCTL(RSFT(KC_M))), LALT(RCTL(RSFT(KC_COMMA))), LALT(RCTL(RSFT(KC_DOT))), _______,                _______,
         _______, _______, _______, _______, _______,          _______,           _______,                           _______, _______, _______, _______, _______,
                                             _______, _______, _______,           _______, _______, _______
     ),
@@ -281,7 +286,6 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
         case HOME_A:
-        case QHOME_A:
             return TAPPING_TERM + 30;
         // case SYM_ENT:
         //     // Very low tapping term to make sure I don't hit Enter accidentally.

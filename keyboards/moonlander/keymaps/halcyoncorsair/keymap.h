@@ -9,19 +9,17 @@ uint8_t mod_state;
 uint8_t oneshot_mod_state;
 uint16_t last_keycode;
 
-// bool caps_word_on;
-// void caps_word_enable(void);
-// void caps_word_disable(void);
+bool caps_word_on;
+void caps_word_enable(void);
+void caps_word_disable(void);
 
 enum layers {
-    // BASE,  // default layer
-    // SYMB,  // symbols
-    // MDIA,  // media keys
     _COLEMAK_DH = 0,
     _QWERTY,
-    _NAV,
     _SYM,
-    _FUNCTION,
+    _NAV,
+    _NUM,
+    _WINMGMT,
     _ADJUST,
 };
 
@@ -42,6 +40,19 @@ enum layers {
 #define QHOME_D LGUI_T(KC_D)
 #define QHOME_F LSFT_T(KC_F)
 
+// Symbols
+#define HOME_BSLS LCTL_T(KC_BSLS)
+#define HOME_PIPE LALT_T(KC_PIPE)
+#define HOME_LCBR LGUI_T(KC_LCBR)
+#define HOME_LPRN LSFT_T(KC_LPRN)
+
+// Num
+#define HOME_F5 LCTL_T(KC_F5)
+#define HOME_F6 LALT_T(KC_F6)
+#define HOME_F7 LGUI_T(KC_F7)
+#define HOME_F8 LSFT_T(KC_F8)
+
+
 // Right-hand home row mods
 #define HOME_N RSFT_T(KC_N)
 #define HOME_E RGUI_T(KC_E)
@@ -53,6 +64,18 @@ enum layers {
 #define QHOME_K RGUI_T(KC_K)
 #define QHOME_L LALT_T(KC_L)
 #define QHOME_SCLN RCTL_T(KC_SCLN)
+
+// Symbols
+#define HOME_DLR RSFT_T(KC_DLR)
+#define HOME_PERC RGUI_T(KC_PERC)
+#define HOME_CIRC LALT_T(KC_CIRC)
+#define HOME_MINS RCTL_T(KC_MINS)
+
+// Num
+#define HOME_4 RSFT_T(KC_4)
+#define HOME_5 RGUI_T(KC_5)
+#define HOME_6 LALT_T(KC_6)
+// #define HOME_ RCTL_T(KC_) - MINS
 
 // One Shot Shifts
 #define OS_LSFT OSM(MOD_LSFT)
