@@ -94,6 +94,7 @@ enum layers {
 // App shortcuts
 #define SPOTLIGHT LGUI(KC_SPC)
 #define ONEPASS RGUI(LALT(KC_BSLS))
+#define DIVVY_PANEL LALT(RCTL(RSFT(KC_D)))
 #define DIVVY_U LALT(RCTL(RSFT(KC_U)))
 #define DIVVY_I LALT(RCTL(RSFT(KC_I)))
 #define DIVVY_O LALT(RCTL(RSFT(KC_O)))
