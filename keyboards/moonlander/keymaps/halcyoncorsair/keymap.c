@@ -273,19 +273,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case RSFT_T(KC_DLR):
             if (record->tap.count) {
-                tap_code16(KC_DLR); // Send KC_DLR on tap
+                if (layer_state_is(_NUM)) { // layer order is immportant here
+                    tap_code16(KC_4); // Send KC_DLR on tap
+                    return false;
+                }
+                // if layer is _SYM
+                tap_code16(KC_DLR);
                 return false;        // Return false to ignore further processing of key
             }
             break;
         case RGUI_T(KC_PERC):
             if (record->tap.count) {
-                tap_code16(KC_PERC); // Send KC_PERC on tap
+                if (layer_state_is(_NUM)) { // layer order is immportant here
+                    tap_code16(KC_5); // Send KC_PERC on tap
+                    return false;
+                }
+                tap_code16(KC_PERC);
                 return false;        // Return false to ignore further processing of key
             }
             break;
         case LALT_T(KC_CIRC):
             if (record->tap.count) {
-                tap_code16(KC_CIRC); // Send KC_CIRC on tap
+                if (layer_state_is(_NUM)) { // layer order is immportant here
+                    tap_code16(KC_6); // Send KC_CIRC on tap
+                    return false;
+                }
+                tap_code16(KC_CIRC);
                 return false;        // Return false to ignore further processing of key
             }
             break;
