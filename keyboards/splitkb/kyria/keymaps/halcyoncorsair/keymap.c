@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_TAB  , KC_Q ,   KC_W  ,  KC_F  ,   KC_P ,   KC_B ,                                          KC_J,     KC_L,   KC_U,    KC_Y ,   KC_SCLN, KC_BSPC,
      KC_ESC  , HOME_A,  HOME_R,  HOME_S,   HOME_T,  KC_G ,                                          KC_M,   HOME_N,   HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
      OS_LSFT , KC_Z ,   KC_X  ,  KC_C  ,   KC_D ,   KC_V , SPOTLIGHT,KC_CAPS,     ONEPASS,  ADJUST, KC_K,     KC_H,   KC_COMM, KC_DOT,  KC_SLSH, OS_RSFT,
-                                 ADJUST,   DIVVY,     NAV, KC_SPC ,  KC_BSPC,      KC_TAB , KC_SPC, SYM,  KC_RGUI, KC_APP
+                                 ADJUST,   DIVVY,     NAV, KC_SPC ,  KC_BSPC,      KC_TAB , KC_ENT, SYM,  KC_RGUI, KC_APP
     ),
     [_QWERTY] = LAYOUT(
      KC_TAB  , KC_Q ,   KC_W   , KC_E  ,   KC_R ,   KC_T ,                                          KC_Y,   KC_U ,    KC_I ,    KC_O ,   KC_P ,      KC_BSPC,
@@ -69,7 +69,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______,   _______,                                       KC_PGUP,  MHOME,   KC_UP,   MEND,    KC_VOLU, KC_DEL,
       _______, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT,   _______,                                       KC_PGDN,  KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, KC_CAPS,  // KC_PSCR
       _______, _______, _______, _______, CAPS_WORD, _______, _______, KC_SLCK,    _______, _______,XXXXXXX,  KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_INS,
-                                 _______, _______,   _______, _______, _______,    _______, _______, _______, _______, _______
+                                 _______, _______,   _______, _______, _______,    _______, _______,NUM,      _______, _______
     ),
     [_NUM] = LAYOUT(
         _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,                                        KC_EQL,  KC_7,    KC_8,    KC_9,    KC_PLUS,   KC_BSPC,
