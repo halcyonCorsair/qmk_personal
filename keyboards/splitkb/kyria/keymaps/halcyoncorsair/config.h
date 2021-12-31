@@ -64,3 +64,9 @@
 // Allows to use either side as the master. Look at the documentation for info:
 // https://docs.qmk.fm/#/config_options?id=setting-handedness
 #define EE_HANDS
+
+// No music here
+#define NO_MUSIC_MODE
+
+// Save some space
+#define LAYER_STATE_8BIT
