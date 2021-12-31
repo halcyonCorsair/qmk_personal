@@ -16,6 +16,7 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "keymap.h"
+#include "features/select_word.h"
 
 // #define SYM      MO(_SYM)
 // #define NAV      MO(_NAV)
@@ -81,10 +82,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_SYM] = LAYOUT(
-        _______, KC_EXLM, KC_AT,   KC_SCLN,  KC_COLN,  KC_UNDS,                                       KC_EQL,  KC_AMPR, KC_GRAVE,KC_TILD, KC_PLUS, _______,
+        _______, KC_EXLM, KC_AT,   KC_SCLN, KC_COLN, KC_UNDS,                                         KC_EQL,  KC_AMPR, KC_GRAVE,KC_TILD, KC_PLUS, _______,
         _______, HOME_BSLS,HOME_PIPE,HOME_LCBR,HOME_LPRN,KC_LBRC,                                     KC_ASTR, HOME_DLR,HOME_PERC,HOME_CIRC,HOME_MINS,_______,
-        _______, KC_TILD, KC_GRAVE,KC_RCBR, KC_RPRN,  KC_RBRC, _______, _______,    _______, _______, KC_AMPR, KC_EXLM, KC_AT,   KC_HASH, _______, _______,
-                                    _______, _______,  NUM,    _______,  KC_DEL,    _______, _______, _______, _______, _______
+        _______, KC_TILD, KC_GRAVE,KC_RCBR, KC_RPRN, KC_RBRC, SELWORD, _______,     _______, _______, KC_AMPR, KC_EXLM, KC_AT,   KC_HASH, _______, _______,
+                                   _______, _______, NUM,     _______,  KC_DEL,     _______, _______, _______, _______, _______
     ),
 
 /*
@@ -394,6 +395,7 @@ void process_repeat_key(uint16_t keycode, const keyrecord_t *record) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_caps_word(keycode, record);
     process_repeat_key(keycode, record);
+    if (!process_select_word(keycode, record, SELWORD)) { return false; }
     if (record->event.pressed) {
         switch (keycode) {
         case VRSN:

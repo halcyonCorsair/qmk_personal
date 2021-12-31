@@ -22,6 +22,13 @@ enum layers {
     _ADJUST,
 };
 
+enum custom_keycodes {
+    CAPS_WORD,
+    REPEAT,
+    SELWORD,
+    VRSN,
+};
+
 // Layer aliases for readability
 #define QWERTY   DF(_QWERTY)
 #define COLEMAK  DF(_COLEMAK_DH)
@@ -119,10 +126,3 @@ enum layers {
 #define DIVVY_M LALT(RCTL(RSFT(KC_M)))
 #define DIVVY_COMMA LALT(RCTL(RSFT(KC_COMMA)))
 #define DIVVY_DOT LALT(RCTL(RSFT(KC_DOT)))
-
-
-enum custom_keycodes {
-    REPEAT,
-    CAPS_WORD,
-    VRSN,
-};
