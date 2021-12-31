@@ -276,224 +276,226 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
 }
 #endif
 
-// // CAPS_WORD: A "smart" Caps Lock key that only capitalizes the next identifier you type
-// // and then toggles off Caps Lock automatically when you're done.
-// void caps_word_enable(void) {
-//     caps_word_on = true;
-//     if (!(host_keyboard_led_state().caps_lock)) {
-//         tap_code(KC_CAPS);
-//     }
-// }
+// CAPS_WORD: A "smart" Caps Lock key that only capitalizes the next identifier you type
+// and then toggles off Caps Lock automatically when you're done.
+void caps_word_enable(void) {
+    caps_word_on = true;
+    if (!(host_keyboard_led_state().caps_lock)) {
+        tap_code(KC_CAPS);
+    }
+}
 
-// void caps_word_disable(void) {
-//     caps_word_on = false;
-//     unregister_mods(MOD_MASK_SHIFT);
-//     if (host_keyboard_led_state().caps_lock) {
-//         tap_code(KC_CAPS);
-//     }
-// }
+void caps_word_disable(void) {
+    caps_word_on = false;
+    unregister_mods(MOD_MASK_SHIFT);
+    if (host_keyboard_led_state().caps_lock) {
+        tap_code(KC_CAPS);
+    }
+}
 
-// // Used to extract the basic tapping keycode from a dual-role key.
-// // Example: GET_TAP_KC(MT(MOD_RSFT, KC_E)) == KC_E
-// #define GET_TAP_KC(dual_role_key) dual_role_key & 0xFF
+// Used to extract the basic tapping keycode from a dual-role key.
+// Example: GET_TAP_KC(MT(MOD_RSFT, KC_E)) == KC_E
+#define GET_TAP_KC(dual_role_key) dual_role_key & 0xFF
 
-// void process_caps_word(uint16_t keycode, const keyrecord_t *record) {
-//     // Update caps word state
-//     if (caps_word_on) {
-//         switch (keycode) {
-//             case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-//             case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-//                 // Earlier return if this has not been considered tapped yet
-//                 if (record->tap.count == 0) { return; }
-//                 // Get the base tapping keycode of a mod- or layer-tap key
-//                 keycode = GET_TAP_KC(keycode);
-//                 break;
-//             default:
-//                 break;
-//         }
+void process_caps_word(uint16_t keycode, const keyrecord_t *record) {
+    // Update caps word state
+    if (caps_word_on) {
+        switch (keycode) {
+            case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+            case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+                // Earlier return if this has not been considered tapped yet
+                if (record->tap.count == 0) { return; }
+                // Get the base tapping keycode of a mod- or layer-tap key
+                keycode = GET_TAP_KC(keycode);
+                break;
+            default:
+                break;
+        }
 
-//         switch (keycode) {
-//             // Keycodes to shift
-//             case KC_A ... KC_Z:
-//                 if (record->event.pressed) {
-//                     if (get_oneshot_mods() & MOD_MASK_SHIFT) {
-//                         caps_word_disable();
-//                         add_oneshot_mods(MOD_MASK_SHIFT);
-//                     } else {
-//                         caps_word_enable();
-//                     }
-//                 }
-//             // Keycodes that enable caps word but shouldn't get shifted
-//             case KC_MINS:
-//             case KC_BSPC:
-//             case KC_UNDS:
-//             case KC_PIPE:
-//             case REPEAT:
-//             case CAPS_WORD:
-//             case OS_LSFT:
-//             case OS_RSFT:
-//             case KC_LPRN:
-//             case KC_RPRN:
-//                 // If chording mods, disable caps word
-//                 if (record->event.pressed && (get_mods() != MOD_LSFT) && (get_mods() != 0)) {
-//                     caps_word_disable();
-//                 }
-//                 break;
-//             default:
-//                 // Any other keycode should automatically disable caps
-//                 if (record->event.pressed && !(get_oneshot_mods() & MOD_MASK_SHIFT)) {
-//                     caps_word_disable();
-//                 }
-//                 break;
-//         }
-//     }
-// }
+        switch (keycode) {
+            // Keycodes to shift
+            case KC_A ... KC_Z:
+                if (record->event.pressed) {
+                    if (get_oneshot_mods() & MOD_MASK_SHIFT) {
+                        caps_word_disable();
+                        add_oneshot_mods(MOD_MASK_SHIFT);
+                    } else {
+                        caps_word_enable();
+                    }
+                }
+            // Keycodes that enable caps word but shouldn't get shifted
+            case KC_MINS:
+            case KC_BSPC:
+            case KC_UNDS:
+            case KC_PIPE:
+            case REPEAT:
+            case CAPS_WORD:
+            case OS_LSFT:
+            case OS_RSFT:
+            case KC_LPRN:
+            case KC_RPRN:
+                // If chording mods, disable caps word
+                if (record->event.pressed && (get_mods() != MOD_LSFT) && (get_mods() != 0)) {
+                    caps_word_disable();
+                }
+                break;
+            default:
+                // Any other keycode should automatically disable caps
+                if (record->event.pressed && !(get_oneshot_mods() & MOD_MASK_SHIFT)) {
+                    caps_word_disable();
+                }
+                break;
+        }
+    }
+}
 
-// uint16_t last_keycode = XXXXXXX;
-// uint8_t last_modifier = 0;
-// void process_repeat_key(uint16_t keycode, const keyrecord_t *record) {
-//     if (keycode != REPEAT) {
-//         // Early return when holding down a pure layer key
-//         // to retain modifiers
-//         switch (keycode) {
-//             case QK_DEF_LAYER ... QK_DEF_LAYER_MAX:
-//             case QK_MOMENTARY ... QK_MOMENTARY_MAX:
-//             case QK_LAYER_MOD ... QK_LAYER_MOD_MAX:
-//             case QK_ONE_SHOT_LAYER ... QK_ONE_SHOT_LAYER_MAX:
-//             case QK_TOGGLE_LAYER ... QK_TOGGLE_LAYER_MAX:
-//             case QK_TO ... QK_TO_MAX:
-//             case QK_LAYER_TAP_TOGGLE ... QK_LAYER_TAP_TOGGLE_MAX:
-//                 return;
-//         }
-//         last_modifier = oneshot_mod_state > mod_state ? oneshot_mod_state : mod_state;
-//         switch (keycode) {
-//             case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-//             case QK_MOD_TAP ... QK_MOD_TAP_MAX:
-//                 if (record->event.pressed) {
-//                     last_keycode = GET_TAP_KC(keycode);
-//                 }
-//                 break;
-//             default:
-//                 if (record->event.pressed) {
-//                     last_keycode = keycode;
-//                 }
-//                 break;
-//         }
-//     } else { // keycode == REPEAT
-//         if (record->event.pressed) {
-//             register_mods(last_modifier);
-//             register_code16(last_keycode);
-//         } else {
-//             unregister_code16(last_keycode);
-//             unregister_mods(last_modifier);
-//         }
-//     }
-// }
+uint16_t last_keycode = XXXXXXX;
+uint8_t last_modifier = 0;
+void process_repeat_key(uint16_t keycode, const keyrecord_t *record) {
+    if (keycode != REPEAT) {
+        // Early return when holding down a pure layer key
+        // to retain modifiers
+        switch (keycode) {
+            case QK_DEF_LAYER ... QK_DEF_LAYER_MAX:
+            case QK_MOMENTARY ... QK_MOMENTARY_MAX:
+            case QK_LAYER_MOD ... QK_LAYER_MOD_MAX:
+            case QK_ONE_SHOT_LAYER ... QK_ONE_SHOT_LAYER_MAX:
+            case QK_TOGGLE_LAYER ... QK_TOGGLE_LAYER_MAX:
+            case QK_TO ... QK_TO_MAX:
+            case QK_LAYER_TAP_TOGGLE ... QK_LAYER_TAP_TOGGLE_MAX:
+                return;
+        }
+        last_modifier = oneshot_mod_state > mod_state ? oneshot_mod_state : mod_state;
+        switch (keycode) {
+            case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            case QK_MOD_TAP ... QK_MOD_TAP_MAX:
+                if (record->event.pressed) {
+                    last_keycode = GET_TAP_KC(keycode);
+                }
+                break;
+            default:
+                if (record->event.pressed) {
+                    last_keycode = keycode;
+                }
+                break;
+        }
+    } else { // keycode == REPEAT
+        if (record->event.pressed) {
+            register_mods(last_modifier);
+            register_code16(last_keycode);
+        } else {
+            unregister_code16(last_keycode);
+            unregister_mods(last_modifier);
+        }
+    }
+}
 
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//     if (record->event.pressed) {
-//         switch (keycode) {
-//         case VRSN:
-//             SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-//             return false;
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    process_caps_word(keycode, record);
+    process_repeat_key(keycode, record);
+    if (record->event.pressed) {
+        switch (keycode) {
+        case VRSN:
+            SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
+            return false;
 
-//         case CAPS_WORD:
-//             // Toggle `caps_word_on`
-//             if (record->event.pressed) {
-//                 if (caps_word_on) {
-//                     caps_word_disable();
-//                     return false;
-//                 } else {
-//                     caps_word_enable();
-//                     return false;
-//                 }
-//             }
-//             break;
+        case CAPS_WORD:
+            // Toggle `caps_word_on`
+            if (record->event.pressed) {
+                if (caps_word_on) {
+                    caps_word_disable();
+                    return false;
+                } else {
+                    caps_word_enable();
+                    return false;
+                }
+            }
+            break;
 
-//         // symbol mod taps
-//         case LALT_T(KC_PIPE):
-//             if (record->tap.count) {
-//                 tap_code16(KC_PIPE); // Send KC_PIPE on tap
-//                 return false;        // Return false to ignore further processing of key
-//             }
-//             break;
-//         case LGUI_T(KC_LCBR):
-//             if (record->tap.count) {
-//                 tap_code16(KC_LCBR); // Send KC_LCBR on tap
-//                 return false;        // Return false to ignore further processing of key
-//             }
-//             break;
-//         case LSFT_T(KC_LPRN):
-//             if (record->tap.count) {
-//                 tap_code16(KC_LPRN); // Send KC_LPRN on tap
-//                 return false;        // Return false to ignore further processing of key
-//             }
-//             break;
-//         case RSFT_T(KC_DLR):
-//             if (record->tap.count) {
-//                 // Update to use IS_LAYER_ON && IS_LAYER_OFF?
-//                 if (layer_state_is(_NUM)) { // layer order is immportant here
-//                     tap_code16(KC_4); // Send KC_DLR on tap
-//                     return false;
-//                 }
-//                 // if layer is _SYM
-//                 tap_code16(KC_DLR);
-//                 return false;        // Return false to ignore further processing of key
-//             }
-//             break;
-//         case RGUI_T(KC_PERC):
-//             if (record->tap.count) {
-//                 if (layer_state_is(_NUM)) { // layer order is immportant here
-//                     tap_code16(KC_5); // Send KC_PERC on tap
-//                     return false;
-//                 }
-//                 tap_code16(KC_PERC);
-//                 return false;        // Return false to ignore further processing of key
-//             }
-//             break;
-//         case LALT_T(KC_CIRC):
-//             if (record->tap.count) {
-//                 if (layer_state_is(_NUM)) { // layer order is immportant here
-//                     tap_code16(KC_6); // Send KC_CIRC on tap
-//                     return false;
-//                 }
-//                 tap_code16(KC_CIRC);
-//                 return false;        // Return false to ignore further processing of key
-//             }
-//             break;
-//         }
-//     }
-//     return true;
-// }
+        // symbol mod taps
+        case LALT_T(KC_PIPE):
+            if (record->tap.count) {
+                tap_code16(KC_PIPE); // Send KC_PIPE on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case LGUI_T(KC_LCBR):
+            if (record->tap.count) {
+                tap_code16(KC_LCBR); // Send KC_LCBR on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case LSFT_T(KC_LPRN):
+            if (record->tap.count) {
+                tap_code16(KC_LPRN); // Send KC_LPRN on tap
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case RSFT_T(KC_DLR):
+            if (record->tap.count) {
+                // Update to use IS_LAYER_ON && IS_LAYER_OFF?
+                if (layer_state_is(_NUM)) { // layer order is immportant here
+                    tap_code16(KC_4); // Send KC_DLR on tap
+                    return false;
+                }
+                // if layer is _SYM
+                tap_code16(KC_DLR);
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case RGUI_T(KC_PERC):
+            if (record->tap.count) {
+                if (layer_state_is(_NUM)) { // layer order is immportant here
+                    tap_code16(KC_5); // Send KC_PERC on tap
+                    return false;
+                }
+                tap_code16(KC_PERC);
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        case LALT_T(KC_CIRC):
+            if (record->tap.count) {
+                if (layer_state_is(_NUM)) { // layer order is immportant here
+                    tap_code16(KC_6); // Send KC_CIRC on tap
+                    return false;
+                }
+                tap_code16(KC_CIRC);
+                return false;        // Return false to ignore further processing of key
+            }
+            break;
+        }
+    }
+    return true;
+}
 
-// #ifdef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
-// bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
-//     switch (keycode) {
-//         case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
-//             // Immediately select the hold action when another key is pressed.
-//             return true;
-//         default:
-//             // Do not select the hold action when another key is pressed.
-//             return false;
-//     }
-// }
-// #endif
+#ifdef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
+            // Immediately select the hold action when another key is pressed.
+            return true;
+        default:
+            // Do not select the hold action when another key is pressed.
+            return false;
+    }
+}
+#endif
 
-// /*
-//  * Per key tapping term settings
-//  */
-// uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
-//     switch (keycode) {
-//         case HOME_A:
-//             return TAPPING_TERM + 40;
-//         case HOME_R:
-//         case HOME_O:
-//         case QHOME_S:
-//             return TAPPING_TERM + 30;
-//         // case SYM_ENT:
-//         //     // Very low tapping term to make sure I don't hit Enter accidentally.
-//         //     return TAPPING_TERM - 85;
-//         default:
-//             return TAPPING_TERM;
-//     }
-// };
+/*
+ * Per key tapping term settings
+ */
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case HOME_A:
+            return TAPPING_TERM + 40;
+        case HOME_R:
+        case HOME_O:
+        case QHOME_S:
+            return TAPPING_TERM + 30;
+        // case SYM_ENT:
+        //     // Very low tapping term to make sure I don't hit Enter accidentally.
+        //     return TAPPING_TERM - 85;
+        default:
+            return TAPPING_TERM;
+    }
+};
