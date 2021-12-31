@@ -233,6 +233,7 @@ void process_repeat_key(uint16_t keycode, const keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    process_caps_word(keycode, record);
     if (record->event.pressed) {
         switch (keycode) {
         case VRSN:
