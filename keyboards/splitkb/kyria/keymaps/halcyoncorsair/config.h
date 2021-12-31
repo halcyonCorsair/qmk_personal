@@ -66,6 +66,11 @@
 // https://docs.qmk.fm/#/config_options?id=setting-handedness
 #define EE_HANDS
 
+// For user functions
+#ifndef MAC_HOTKEYS
+    #define MAC_HOTKEYS
+#endif
+
 // Space saving measures
 // - See https://docs.qmk.fm/#/squeezing_avr?id=rgb-settings for some rgb stuff
 //   to disable as well

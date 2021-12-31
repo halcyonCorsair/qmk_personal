@@ -239,6 +239,24 @@ bool oled_task_user(void) {
 }
 #endif
 
+
+bool is_alt_tab_active = false;
+uint16_t alt_tab_timer = 0;
+
+void matrix_scan_user(void) {
+    if (is_alt_tab_active) {
+        if (timer_elapsed(alt_tab_timer) > 700) {
+            #ifdef MAC_HOTKEYS
+                register_code(KC_LGUI);
+            #else
+                register_code(KC_LALT);
+            #endif
+            unregister_code(KC_LGUI);
+            is_alt_tab_active = false;
+        }
+    }
+}
+
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {           // Left - Industrial encoder
@@ -259,11 +277,29 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         }
     } else if (index == 1) {    // Right - Linear encoder
         if (layer_state_is(_NAV)) {
-            // Next/Previous app
             if (clockwise) {
-                tap_code16(NXTAPP);
+                if (!is_alt_tab_active) {
+                    is_alt_tab_active = true;
+                    #ifdef MAC_HOTKEYS
+                        register_code(KC_LGUI);
+                    #else
+                        register_code(KC_LALT);
+                    #endif
+                }
+                alt_tab_timer = timer_read();
+                tap_code16(KC_TAB);
             } else {
-                tap_code16(PRVAPP);
+                if (!is_alt_tab_active) {
+                    is_alt_tab_active = true;
+                    register_code(KC_LGUI);
+                    #ifdef MAC_HOTKEYS
+                        register_code(KC_LGUI);
+                    #else
+                        register_code(KC_LALT);
+                    #endif
+                }
+                alt_tab_timer = timer_read();
+                tap_code16(S(KC_TAB));
             }
         } else {
             // Volume control
