@@ -472,6 +472,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
         case RSFT_T(KC_DLR):
             if (record->tap.count) {
+                // TODO: Switch to using get_highest_layer()
                 // Update to use IS_LAYER_ON && IS_LAYER_OFF?
                 if (layer_state_is(_NUM)) { // layer order is immportant here
                     tap_code16(KC_4); // Send KC_DLR on tap
