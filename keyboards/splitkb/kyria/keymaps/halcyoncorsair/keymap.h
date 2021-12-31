@@ -13,8 +13,6 @@ void caps_word_enable(void);
 void caps_word_disable(void);
 
 enum layers {
-    // _QWERTY = 0,
-    // _COLEMAK_DH,
     _COLEMAK_DH = 0,
     _QWERTY,
     _SYM,
