@@ -249,18 +249,27 @@ bool oled_task_user(void) {
 bool encoder_update_user(uint8_t index, bool clockwise) {
 
     if (index == 0) {
-        // Page up/Page down
-        if (clockwise) {
-            tap_code(KC_PGUP);
+        if (layer_state_is(_SYM)) {
+            // Next/Previous workspace
+            if (clockwise) {
+                tap_code16(LCTL(KC_RIGHT));
+            } else {
+                tap_code16(LCTL(KC_LEFT));
+            }
         } else {
-            tap_code(KC_PGDN);
+            // Page up/Page down
+            if (clockwise) {
+                tap_code(KC_PGDN);
+            } else {
+                tap_code(KC_PGUP);
+            }
         }
     } else if (index == 1) {
         // Volume control
         if (clockwise) {
-            tap_code(KC_VOLD);
-        } else {
             tap_code(KC_VOLU);
+        } else {
+            tap_code(KC_VOLD);
         }
     }
     return false;
