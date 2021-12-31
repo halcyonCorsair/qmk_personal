@@ -54,6 +54,7 @@
 #endif  // TAPPING_TERM
 #define TAPPING_TERM 200
 
+// Rotary encoders
 #define ENCODER_DIRECTION_FLIP
 
 // EC11K encoders have a different resolution than other EC11 encoders.
@@ -65,8 +66,8 @@
 // https://docs.qmk.fm/#/config_options?id=setting-handedness
 #define EE_HANDS
 
-// No music here
-#define NO_MUSIC_MODE
-
-// Save some space
+// Space saving measures
+// - See https://docs.qmk.fm/#/squeezing_avr?id=rgb-settings for some rgb stuff
+//   to disable as well
+#define NO_MUSIC_MODE       // No music on the kyria
 #define LAYER_STATE_8BIT
