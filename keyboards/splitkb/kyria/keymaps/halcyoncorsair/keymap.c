@@ -110,9 +110,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NUM] = LAYOUT(
         _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,                                         KC_EQL,  KC_7,    KC_8,    KC_9,    KC_PLUS,  KC_BSPC,
-        _______, HOME_F5, HOME_F6, HOME_F7, HOME_F8, _______,                                         KC_ASTR, HOME_4,  HOME_5,  HOME_6,  HOME_MINS,_______,
+        _______, HOME_F5, HOME_F6, HOME_F7, HOME_F8, KC_DOT,                                          KC_ASTR, HOME_4,  HOME_5,  HOME_6,  HOME_MINS,_______,
         _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______,     _______, _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_SLSH,  _______,
-                                   _______, _______, _______, _______, _______,     _______, _______, KC_DOT,  _______, _______
+                                   _______, _______, _______, _______, _______,     _______, _______, _______, KC_DOT, _______
     ),
     [_WINMGMT] = LAYOUT(
         _______, _______, _______, _______, _______, _______,                                         _______, DIVVY_U, DIVVY_I, DIVVY_O, _______, _______,
