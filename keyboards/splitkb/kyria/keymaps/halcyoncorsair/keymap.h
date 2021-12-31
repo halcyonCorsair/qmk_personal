@@ -96,6 +96,14 @@ enum layers {
 #define NXTAPP LGUI(KC_TAB)
 #define PRVAPP LGUI(LSFT(KC_TAB))
 
+#define UNDO LGUI(KC_Z)
+#define REDO LGUI(LSFT(KC_Z))
+
+#define CUT LGUI(KC_X)
+#define COPY LGUI(KC_C)
+#define PASTE LGUI(KC_V)
+#define PTXT LGUI(LSFT(KC_V))
+
 // App shortcuts
 #define SPOTLIGHT LGUI(KC_SPC)
 #define ONEPASS RGUI(LALT(KC_BSLS))
