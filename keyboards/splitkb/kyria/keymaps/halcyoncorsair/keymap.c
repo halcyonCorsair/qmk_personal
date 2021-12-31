@@ -225,14 +225,13 @@ bool oled_task_user(void) {
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
-
     if (index == 0) {           // Left - Industrial encoder
         if (layer_state_is(_SYM)) {
             // Next/Previous workspace
             if (clockwise) {
-                tap_code16(LCTL(KC_RIGHT));
+                tap_code16(DESKTR);
             } else {
-                tap_code16(LCTL(KC_LEFT));
+                tap_code16(DESKTL);
             }
         } else {
             // Page up/Page down
@@ -246,9 +245,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         if (layer_state_is(_NAV)) {
             // Next/Previous app
             if (clockwise) {
-                tap_code16(LGUI(KC_TAB));
+                tap_code16(NXTAPP);
             } else {
-                tap_code16(LGUI(LSFT(KC_TAB)));
+                tap_code16(PRVAPP);
             }
         } else {
             // Volume control

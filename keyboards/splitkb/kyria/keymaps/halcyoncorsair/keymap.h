@@ -90,6 +90,12 @@ enum layers {
 #define MHOME RGUI(KC_LEFT)
 #define MEND RGUI(KC_RIGHT)
 
+// OS shotcuts
+#define DESKTL LCTL(KC_LEFT))
+#define DESKTR LCTL(KC_RIGHT))
+#define NXTAPP LGUI(KC_TAB)
+#define PRVAPP LGUI(LSFT(KC_TAB))
+
 // App shortcuts
 #define SPOTLIGHT LGUI(KC_SPC)
 #define ONEPASS RGUI(LALT(KC_BSLS))
