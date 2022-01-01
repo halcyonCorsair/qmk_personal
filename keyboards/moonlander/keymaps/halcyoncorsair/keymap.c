@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    XXXXXXX,      XXXXXXX,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
         KC_ESC,  HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_G,    KC_HYPR,      KC_MEH,   KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
         OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                            KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, OS_RSFT,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NAV,           SPOTLIGHT,       ONEPASS,           SYM,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NAV,              SPOTLIGHT,    ONEPASS,           SYM,     XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                                             KC_SPC,  KC_BSPC, DIVVY,        ADJUST,   KC_TAB,  KC_ENT
     ),
 
@@ -314,9 +314,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case HOME_O:
         case QHOME_S:
             return TAPPING_TERM + 30;
-        // case SYM_ENT:
-        //     // Very low tapping term to make sure I don't hit Enter accidentally.
-        //     return TAPPING_TERM - 85;
         default:
             return TAPPING_TERM;
     }
