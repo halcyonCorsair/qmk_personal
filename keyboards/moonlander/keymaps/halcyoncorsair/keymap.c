@@ -19,8 +19,16 @@
 
 #include QMK_KEYBOARD_H
 #include "version.h"
-// #include "quantum_keycodes.h"
 #include "keymap.h"
+#include "features/select_word.h"
+
+
+const uint16_t PROGMEM caps_word_colemak_combo[] = {KC_G, KC_M, COMBO_END};
+const uint16_t PROGMEM caps_word_qwerty_combo[] = {KC_G, KC_H, COMBO_END};
+combo_t key_combos[COMBO_COUNT] = {
+    COMBO(test_combo1, CAPS_WORD),
+    COMBO(test_combo2, CAPS_WORD),
+};
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {

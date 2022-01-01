@@ -54,6 +54,9 @@
 #endif  // TAPPING_TERM
 #define TAPPING_TERM 200
 
+// Combos
+#define COMBO_COUNT 2
+
 // Rotary encoders
 #define ENCODER_DIRECTION_FLIP
 

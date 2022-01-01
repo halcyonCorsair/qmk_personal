@@ -39,6 +39,9 @@
 // Recommended for heavy chording.
 #define QMK_KEYS_PER_SCAN 4
 
+// Combos
+#define COMBO_COUNT 2
+
 // #define RGB_DISABLE_TIMEOUT 0 // number of milliseconds to wait until rgb automatically turns off
 // #define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT // Sets the default mode, if none has been set
 #define RGB_MATRIX_STARTUP_VAL 128
