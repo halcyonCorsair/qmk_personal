@@ -5,10 +5,20 @@ RGBLIGHT_ENABLE = yes      # Enable keyboard RGB underglow
 
 COMBO_ENABLE = yes
 
+# Userspace features
+CAPS_WORD_ENABLE = yes
+REPEAT_KEY_ENABLE = no
+SELECT_WORD_ENABLE = yes
+
 # Need to reduce firmware size
 LTO_ENABLE = yes
+
 CONSOLE_ENABLE = no
+COMMAND_ENABLE = no
 MOUSEKEY_ENABLE = no
+# EXTRAKEY_ENABLE = no // this includes media keys and system volue control
+
 SPACE_CADET_ENABLE = no
 GRAVE_ESC_ENABLE = no
+MAGIC_ENABLE = no
 MUSIC_ENABLE = no

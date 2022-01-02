@@ -20,24 +20,23 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "halcyoncorsair.h"
-#include "keymap.h"
 #ifdef CONSOLE_ENABLED
     #include "print.h"
 #endif
 
 enum combo_events {
     HOME_CAPS_WORD,
-    INNER_CAPS_WORD,
+    INNER_CAPS_LOCK,
     COMBO_LENGTH
 };
 uint16_t COMBO_LEN = COMBO_LENGTH;
 
-const uint16_t PROGMEM home_caps_word_combo[]   = {HOME_T,  HOME_N, COMBO_END};
-const uint16_t PROGMEM inner_caps_word_combo[]  = {KC_G,    KC_M,   COMBO_END};
+const uint16_t PROGMEM caps_word_combo[]   = {HOME_T,  HOME_N, COMBO_END};
+const uint16_t PROGMEM caps_lock_combo[]   = {KC_G,    KC_M,   COMBO_END};
 
 combo_t key_combos[] = {
-    [HOME_CAPS_WORD]  = COMBO(home_caps_word_combo,  CAPS_WORD),
-    [INNER_CAPS_WORD] = COMBO(inner_caps_word_combo, CAPS_WORD), // make this capslock instead?
+    [HOME_CAPS_WORD]  = COMBO(caps_word_combo,  CAPS_WORD),
+    [INNER_CAPS_LOCK] = COMBO(caps_lock_combo, KC_CAPS),
 };
 
 // clang-format off

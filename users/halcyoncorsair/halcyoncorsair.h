@@ -10,6 +10,12 @@
 #ifdef SELECT_WORD_ENABLE
 #   include "features/select_word.h"
 #endif
+#ifdef ENCODER_ENABLE
+#   include "encoder_config.h"
+#endif
+#ifdef OLED_ENABLE
+#   include "oled_config.h"
+#endif
 #include "process_records.h"
 
 enum layers {

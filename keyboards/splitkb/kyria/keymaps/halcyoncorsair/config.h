@@ -46,7 +46,7 @@
 #define TAPPING_TOGGLE 2
 
 // Recommended for heavy chording.
-#define QMK_KEYS_PER_SCAN 4
+#define QMK_KEYS_PER_SCAN 4     // 18
 
 // Set tapping term
 #ifdef TAPPING_TERM
@@ -55,7 +55,7 @@
 #define TAPPING_TERM 200
 
 // Combos
-#define COMBO_COUNT 2
+#define COMBO_ONLY_FROM_LAYER 0
 
 // Rotary encoders
 #define ENCODER_DIRECTION_FLIP
@@ -67,15 +67,29 @@
 
 // Allows to use either side as the master. Look at the documentation for info:
 // https://docs.qmk.fm/#/config_options?id=setting-handedness
-#define EE_HANDS
+#define EE_HANDS    // 12
 
-// For user functions
-#ifndef MAC_HOTKEYS
-    #define MAC_HOTKEYS
-#endif
+// Sync layer state to both sides, e.g. for oled
+#define SPLIT_LAYER_STATE_ENABLE    // 146
+#define SPLIT_LED_STATE_ENABLE      // 116
 
 // Space saving measures
 // - See https://docs.qmk.fm/#/squeezing_avr?id=rgb-settings for some rgb stuff
 //   to disable as well
 #define NO_MUSIC_MODE       // No music on the kyria
 #define LAYER_STATE_8BIT
+
+#undef LOCKING_SUPPORT_ENABLE
+#undef LOCKING_RESYNC_ENABLE
+
+// #undef RGBLIGHT_ANIMATIONS
+// #undef RGBLIGHT_EFFECT_BREATHING
+#undef RGBLIGHT_EFFECT_RAINBOW_MOOD
+#undef RGBLIGHT_EFFECT_RAINBOW_SWIRL
+#undef RGBLIGHT_EFFECT_SNAKE
+#undef RGBLIGHT_EFFECT_KNIGHT
+#undef RGBLIGHT_EFFECT_CHRISTMAS
+#undef RGBLIGHT_EFFECT_STATIC_GRADIENT
+#undef RGBLIGHT_EFFECT_RGB_TEST
+#undef RGBLIGHT_EFFECT_ALTERNATING
+#undef RGBLIGHT_EFFECT_TWINKLE
