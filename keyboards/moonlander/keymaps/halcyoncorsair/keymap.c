@@ -21,13 +21,21 @@
 #include "version.h"
 #include "keymap.h"
 #include "features/select_word.h"
+#include "print.h"
 
+enum combo_events {
+    HOME_CAPS_WORD,
+    INNER_CAPS_WORD,
+    COMBO_LENGTH
+};
+uint16_t COMBO_LEN = COMBO_LENGTH;
 
-const uint16_t PROGMEM caps_word_colemak_combo[] = {KC_G, KC_M, COMBO_END};
-const uint16_t PROGMEM caps_word_qwerty_combo[] = {KC_G, KC_H, COMBO_END};
-combo_t key_combos[COMBO_COUNT] = {
-    COMBO(test_combo1, CAPS_WORD),
-    COMBO(test_combo2, CAPS_WORD),
+const uint16_t PROGMEM home_caps_word_combo[]   = {HOME_T,  HOME_N, COMBO_END};
+const uint16_t PROGMEM inner_caps_word_combo[]  = {KC_G,    KC_M,   COMBO_END};
+
+combo_t key_combos[] = {
+    [HOME_CAPS_WORD]  = COMBO(home_caps_word_combo,  CAPS_WORD),
+    [INNER_CAPS_WORD] = COMBO(inner_caps_word_combo, CAPS_WORD),
 };
 
 // clang-format off
@@ -213,6 +221,18 @@ void process_repeat_key(uint16_t keycode, const keyrecord_t *record) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+#ifdef CONSOLE_ENABLE
+    uprintf("pru: 0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
+         keycode,
+         record->event.key.row,
+         record->event.key.col,
+         get_highest_layer(layer_state),
+         record->event.pressed,
+         get_mods(),
+         get_oneshot_mods(),
+         record->tap.count
+    );
+#endif
     process_caps_word(keycode, record);
     process_repeat_key(keycode, record);
     if (record->event.pressed) {
@@ -222,6 +242,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
 
         case CAPS_WORD:
+#ifdef CONSOLE_ENABLE
+            uprintf("pru: Activate CAPS_WORD\n");
+#endif
             // Toggle `caps_word_on`
             if (record->event.pressed) {
                 if (caps_word_on) {

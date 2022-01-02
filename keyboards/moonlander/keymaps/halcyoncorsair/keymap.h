@@ -24,10 +24,11 @@ enum layers {
 };
 
 enum custom_keycodes {
+    BOOGABOO = ML_SAFE_RANGE,
     CAPS_WORD,
     REPEAT,
     SELWORD,
-    VRSN = ML_SAFE_RANGE,
+    VRSN,
 };
 
 // Layer aliases for readability
