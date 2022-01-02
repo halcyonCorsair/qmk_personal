@@ -19,9 +19,11 @@
 
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "halcyoncorsair.h"
 #include "keymap.h"
-#include "features/select_word.h"
-#include "print.h"
+#ifdef CONSOLE_ENABLED
+    #include "print.h"
+#endif
 
 enum combo_events {
     HOME_CAPS_WORD,
@@ -35,7 +37,7 @@ const uint16_t PROGMEM inner_caps_word_combo[]  = {KC_G,    KC_M,   COMBO_END};
 
 combo_t key_combos[] = {
     [HOME_CAPS_WORD]  = COMBO(home_caps_word_combo,  CAPS_WORD),
-    [INNER_CAPS_WORD] = COMBO(inner_caps_word_combo, CAPS_WORD),
+    [INNER_CAPS_WORD] = COMBO(inner_caps_word_combo, CAPS_WORD), // make this capslock instead?
 };
 
 // clang-format off
@@ -164,6 +166,7 @@ void process_caps_word(uint16_t keycode, const keyrecord_t *record) {
             case OS_RSFT:
             case KC_LPRN:
             case KC_RPRN:
+            case SYM:
                 // If chording mods, disable caps word
                 if (record->event.pressed && (get_mods() != MOD_LSFT) && (get_mods() != 0)) {
                     caps_word_disable();
@@ -235,7 +238,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
     process_caps_word(keycode, record);
     process_repeat_key(keycode, record);
+#ifdef CAPS_WORD_ENABLE
     if (!process_select_word(keycode, record, SELWORD)) { return false; }
+#endif
     if (record->event.pressed) {
         switch (keycode) {
         case VRSN:
