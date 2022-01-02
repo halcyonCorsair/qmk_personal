@@ -235,6 +235,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #endif
     process_caps_word(keycode, record);
     process_repeat_key(keycode, record);
+    if (!process_select_word(keycode, record, SELWORD)) { return false; }
     if (record->event.pressed) {
         switch (keycode) {
         case VRSN:
