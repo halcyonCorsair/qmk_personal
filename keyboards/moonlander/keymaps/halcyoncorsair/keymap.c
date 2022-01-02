@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_EXLM, KC_AT,   KC_SCLN, KC_COLN, KC_UNDS, _______,      _______, KC_EQL,  KC_AMPR, KC_GRAVE,KC_TILD, KC_PLUS, _______,
         _______, HOME_BSLS,HOME_PIPE,HOME_LCBR,HOME_LPRN,KC_LBRC,_______,   _______, KC_ASTR, HOME_DLR,HOME_PERC,HOME_CIRC,HOME_MINS,_______,
         _______, KC_TILD, KC_GRAVE,KC_RCBR, KC_RPRN, KC_RBRC,                        KC_AMPR, KC_EXLM, KC_AT,   KC_HASH, _______, _______,
-        _______,   _______, _______, SELWORD, NUM,           _______,       _______,          _______, _______, _______, _______, _______,
+        _______,   _______, _______, _______, NUM,           _______,       _______,          _______, _______, _______, _______, _______,
                                             _______, KC_DEL, SH_OS,         _______, _______, _______
     ),
 
@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, _______, _______, _______, _______, _______, _______,      _______, KC_PGUP, MHOME,   KC_UP,   MEND,     KC_VOLU, KC_DEL,
         _______, KC_LCTL, KC_LALT, KC_LGUI, KC_LSFT, _______, _______,      _______, KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, KC_VOLD, KC_CAPS,
         _______, _______, CUT,     COPY,    PASTE,   PTXT,                           XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT,  KC_MUTE, KC_INS,
-        _______, _______, _______, _______, _______,          _______,      _______,          NUM,     _______, _______,  _______, _______,
+        _______, _______, _______, _______, _______,          _______,      _______,          NUM,     SELWORD, _______,  _______, _______,
                                             _______, _______, _______,      _______, _______, _______
     ),
 
