@@ -1,4 +1,8 @@
 # Build options
+
+SRC += halcyoncorsair.c \
+		process_records.c
+
 CAPS_WORD_ENABLE ?= no
 ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
 	SRC += features/caps_word.c
@@ -16,3 +20,5 @@ ifeq ($(strip $(SELECT_WORD_ENABLE)), yes)
     SRC += features/select_word.c
     OPT_DEFS += -DSELECT_WORD_ENABLE
 endif
+
+# SRC += process_records.c

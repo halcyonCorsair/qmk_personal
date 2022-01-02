@@ -8,8 +8,9 @@
 #    include "features/repeat_key.h"
 #endif
 #ifdef SELECT_WORD_ENABLE
-    #include "features/select_word.h"
+#   include "features/select_word.h"
 #endif
+#include "process_records.h"
 
 enum layers {
     _COLEMAK_DH = 0,

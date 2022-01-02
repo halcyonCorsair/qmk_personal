@@ -10,6 +10,10 @@
 #define DIVVY    MO(_WINMGMT)
 #define ADJUST   MO(_ADJUST)
 
+// Used to extract the basic tapping keycode from a dual-role key.
+// Example: GET_TAP_KC(MT(MOD_RSFT, KC_E)) == KC_E
+#define GET_TAP_KC(dual_role_key) dual_role_key & 0xFF
+
 // Colemak-dh
 // Left-hand home row mods
 #define HOME_A LCTL_T(KC_A)
