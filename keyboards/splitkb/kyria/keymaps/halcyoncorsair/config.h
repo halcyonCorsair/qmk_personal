@@ -72,6 +72,7 @@
 // Sync layer state to both sides, e.g. for oled
 #define SPLIT_LAYER_STATE_ENABLE    // 146
 #define SPLIT_LED_STATE_ENABLE      // 116
+#define SPLIT_MODS_ENABLE
 
 // Space saving measures
 // - See https://docs.qmk.fm/#/squeezing_avr?id=rgb-settings for some rgb stuff

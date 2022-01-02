@@ -5,12 +5,12 @@ RGBLIGHT_ENABLE 	= yes       # Enable keyboard RGB underglow
 
 COMBO_ENABLE 	  	= yes
 # LEADER_ENABLE		= yes	# 162
-NKRO_ENABLE 	  	= yes	# 316
+# NKRO_ENABLE 	  	= yes	# 316
 # SWAP_HANDS_ENABLE = yes   # 570
 
 # Userspace features
 CAPS_WORD_ENABLE	= yes
-REPEAT_KEY_ENABLE	= no
+REPEAT_KEY_ENABLE	= yes	# 276
 SELECT_WORD_ENABLE	= yes
 
 # Need to reduce firmware size
