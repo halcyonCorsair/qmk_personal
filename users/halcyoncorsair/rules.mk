@@ -3,7 +3,6 @@
 SRC += halcyoncorsair.c \
 		process_records.c
 
-# Hardware features
 ENCODER_ENABLE ?= no
 ifeq ($(strip $(ENCODER_ENABLE)), yes)
 	SRC += encoder_config.c
@@ -16,9 +15,12 @@ ifeq ($(strip $(OLED_ENABLE)), yes)
     OPT_DEFS += -DOLED_ENABLE
 endif
 
-# TODO rgb matrix config for the moonlander?
+COMBO_ENABLE ?= no
+ifeq ($(strip $(COMBO_ENABLE)), yes)
+	SRC += combos.c
+endif
 
-# Userspace features
+
 CAPS_WORD_ENABLE ?= no
 ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
 	SRC += features/caps_word.c
