@@ -30,9 +30,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         } else {
             // Page up/Page down
             if (clockwise) {
-                tap_code(KC_PGDN);
-            } else {
                 tap_code(KC_PGUP);
+            } else {
+                tap_code(KC_PGDN);
             }
         }
     } else if (index == 1) {    // Right - Linear encoder
