@@ -114,9 +114,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, _______, _______, _______, _______,     _______, _______, NUM,     _______, _______
     ),
     [_NUM] = LAYOUT(
-        _______, KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,                                         KC_EQL,  KC_7,    KC_8,    KC_9,    KC_PLUS, KC_BSPC,
-        _______, HOME_F5, HOME_F6, HOME_F7, HOME_F8, KC_DOT,                                          KC_0,    HOME_4,  HOME_5,  HOME_6,  HOME_MINS,_______,
-        _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______,     _______, _______, KC_ASTR, KC_1,    KC_2,    KC_3,    KC_SLSH, _______,
+        KC_F13,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,                                         KC_EQL,  KC_7,    KC_8,    KC_9,    KC_PLUS, KC_BSPC,
+        KC_F14,  HOME_F5, HOME_F6, HOME_F7, HOME_F8, KC_DOT,                                          KC_0,    HOME_4,  HOME_5,  HOME_6,  HOME_MINS,_______,
+        KC_F15,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______,     _______, _______, KC_ASTR, KC_1,    KC_2,    KC_3,    KC_SLSH, _______,
                                    _______, _______, _______, _______, _______,     _______, _______, _______, KC_DOT, _______
     ),
     [_WINMGMT] = LAYOUT(
