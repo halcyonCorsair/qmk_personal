@@ -6,9 +6,10 @@
 #define COLEMAK  DF(_COLEMAK_DH)
 #define SYM      MO(_SYM)
 #define NAV      TT(_NAV)
-#define NUM      MO(_NUM)
+#define NUM      TT(_NUM)
 #define DIVVY    MO(_WINMGMT)
 #define ADJUST   MO(_ADJUST)
+#define NUM_SPC  LT(_NUM, KC_SPC)
 
 // Used to extract the basic tapping keycode from a dual-role key.
 // Example: GET_TAP_KC(MT(MOD_RSFT, KC_E)) == KC_E
