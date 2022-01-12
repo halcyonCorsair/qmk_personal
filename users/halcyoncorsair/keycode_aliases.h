@@ -7,7 +7,7 @@
 #define SYM      MO(_SYM)
 #define NAV      TT(_NAV)
 #define NUM      TT(_NUM)
-#define DIVVY    MO(_WINMGMT)
+// #define DIVVY    MO(_WINMGMT)
 #define ADJUST   MO(_ADJUST)
 #define NUM_SPC  LT(_NUM, KC_SPC)
 

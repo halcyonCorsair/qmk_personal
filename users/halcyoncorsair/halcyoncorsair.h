@@ -24,7 +24,7 @@ enum layers {
     _SYM,
     _NAV,
     _NUM,
-    _WINMGMT,
+    // _WINMGMT,
     _ADJUST,
     _LAYER_SAFE_RANGE
 };

@@ -114,12 +114,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_F15,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______,     _______, _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_SLSH, KC_DOT,
                                    _______, _______, _______, _______, KC_BSPC,     _______, _______, _______, KC_DOT, _______
     ),
-    [_WINMGMT] = LAYOUT(
-        _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______,                                         _______, DIVVY_U, DIVVY_I, DIVVY_O, _______, _______,
-        _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,                                         DIVVY_H, DIVVY_J, DIVVY_K, DIVVY_L, DIVVY_SCLN,DIVVY_PANEL,
-        _______, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, DIVVY_M, DIVVY_COMMA,DIVVY_DOT,_______, _______,
-                                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
-    ),
+    // [_WINMGMT] = LAYOUT(
+    //     _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______,                                         _______, DIVVY_U, DIVVY_I, DIVVY_O, _______, _______,
+    //     _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,                                         DIVVY_H, DIVVY_J, DIVVY_K, DIVVY_L, DIVVY_SCLN,DIVVY_PANEL,
+    //     _______, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, DIVVY_M, DIVVY_COMMA,DIVVY_DOT,_______, _______,
+    //                                _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+    // ),
 
 /*
  * Adjust Layer: Default layer settings, RGB

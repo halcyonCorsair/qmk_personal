@@ -28,9 +28,9 @@ bool oled_task_user(void) {
         case _NUM:
             oled_write_P(PSTR("Num\n"), false);
             break;
-        case _WINMGMT:
-            oled_write_P(PSTR("Divvy\n"), false);
-            break;
+        // case _WINMGMT:
+        //     oled_write_P(PSTR("Divvy\n"), false);
+        //     break;
         case _ADJUST:
             oled_write_P(PSTR("Adjust\n"), false);
             break;
