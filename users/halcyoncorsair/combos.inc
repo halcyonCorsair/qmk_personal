@@ -63,6 +63,7 @@ COMB(ZX_UNDO,               UNDO,                KC_Z, KC_X)
 COMB(XD_CUT,                CUT,                 KC_X, KC_D)
 COMB(XC_COPY,               COPY,                KC_X, KC_C)
 COMB(CD_PASTE,              PASTE,               KC_C, KC_D)
+COMB(CV_PTXT,               PTXT,                KC_C, KC_V)
 
 
 // //  Layout key reference
