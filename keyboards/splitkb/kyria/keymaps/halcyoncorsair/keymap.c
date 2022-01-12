@@ -28,20 +28,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: Colemak DH
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Y  | ;  : |  Bksp  |
+ * |  Tab   |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Y  | ;  : |  |  \  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |  Esc   |A/Ctrl| R/Alt| S/GUI| T/SFT|   G  |                              |   M  | N/SFT| E/GUI| I/Alt|O/Ctrl|  ' "   |
+ * |  Esc   |A/Ctrl| R/Alt| S/GUI| T/SFT|   G  |                              |   M  | N/SFT| E/GUI| I/Alt|O/Ctrl|  '  "  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   D  |   V  |Spotlt|CapsLk|  | 1pass|Adjust|   K  |   H  | ,  < | . >  | /  ? | RShift |
+ * | LShift |   Z  |   X  |   C  |   D  |   V  |Spotlt|CapsLk|  | 1pass|Adjust|   K  |   H  | ,  < | . >  | /  ? |  -  _  |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
  *                        |Adjust| Divvy| Nav  | Space| Bksp |  | Tab  | Enter| Sym  |Repeat| Menu |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_COLEMAK_DH] = LAYOUT(
-        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                            KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSPC,
+        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                            KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_PIPE,
         KC_ESC,  HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_G,                                            KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
-        OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    SPOTLIGHT,NUM,        ONEPASS, ADJUST,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, OS_RSFT,
+        OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    SPOTLIGHT,NUM,        ONEPASS, ADJUST,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
                                    ADJUST,  DIVVY,   NAV,     KC_SPC,  KC_BSPC,     KC_TAB,  KC_ENT,  SYM,     REPEAT,  KC_MPLY
     ),
 
