@@ -22,6 +22,6 @@ COMMAND_ENABLE 		= no
 MOUSEKEY_ENABLE 	= no
 # EXTRAKEY_ENABLE = no // this includes media keys and system volue control
 SPACE_CADET_ENABLE 	= no
-GRAVE_ESC_ENABLE 	= no
+GRAVE_ESC_ENABLE 	= yes	# 82
 MAGIC_ENABLE 		= no
 MUSIC_ENABLE 		= no
