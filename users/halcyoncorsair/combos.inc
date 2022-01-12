@@ -64,6 +64,7 @@ COMB(XD_CUT,                CUT,                 KC_X, KC_D)
 COMB(XC_COPY,               COPY,                KC_X, KC_C)
 COMB(CD_PASTE,              PASTE,               KC_C, KC_D)
 COMB(CV_PTXT,               PTXT,                KC_C, KC_V)
+COMB(XCD_SELWORD,           SELWORD,             KC_X, KC_C, KC_D)
 
 
 // //  Layout key reference
