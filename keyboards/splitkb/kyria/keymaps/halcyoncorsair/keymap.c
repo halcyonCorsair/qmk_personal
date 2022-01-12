@@ -20,11 +20,6 @@
     #include "print.h"
 #endif
 
-// #define SYM      MO(_SYM)
-// #define NAV      MO(_NAV)
-// #define FKEYS    MO(_FUNCTION)
-// #define ADJUST   MO(_ADJUST)
-
 // TODO: See drashna's stuff to see if there are oled goodies I can steal
 
 // clang-format off
