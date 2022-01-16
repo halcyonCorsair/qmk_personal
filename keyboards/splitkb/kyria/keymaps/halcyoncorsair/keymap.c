@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _______, _______,     _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, _______,
                                    _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
     ),
-
+#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
 /*
  * Layer template
  *
@@ -87,7 +87,49 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    _______, SH_OS,   NUM,     _______,  KC_DEL,     _______, _______, _______, _______, _______
     ),
     // NOTE: swap hands is currently not enabled due to memory requirements
-
+#elif defined(ENABLE_SYMBOL_LAYER_TBAART)
+/*
+ * Raise Layer: Symbols
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * |        |  !   |  @   |  {   |  }   |  |   |                              |      |  _   |  €   |      |      |  \     |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |        |  #   |  $   |  (   |  )   |  `   |                              |   +  |  -   |  /   |  *   |  %   |  ' "   |
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |        |  %   |  ^   |  [   |  ]   |  ~   |      |      |  |      |      |   &  |  =   |  ,   |  .   |  / ? | - _    |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+    [_SYM] = LAYOUT(
+      _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_PIPE,                                     _______, KC_UNDS, _______,_______,_______,KC_BSLS,
+      _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_GRV,                                      KC_PLUS, KC_MINS, KC_SLSH, KC_ASTR, KC_PERC, KC_QUOT,
+      _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, KC_TILD, _______, _______, _______, _______, KC_AMPR, KC_EQL,  KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
+                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+    ),
+#else
+// #ifdef ENABLE_SYMBOL_LAYER_WINTERNEBS
+/*
+ * winter nebs: NUM/symb, swapped numbers
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * |    `   |   1  |   2  |   3  |   4  |   5  |                              |   9  |   0  |   6  |   7  |   8  |  |  \  |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |   DEL  |   $  |   +  |   (  |   )  |   @  |                              |   |  |   -  |   =  |   _  |   *  |  '  "  |
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |        |   !  |   #  |   {  |   }  |   ~  |      |      |  |      |      |   &  |   [  |   ]  |   %  |   ^  |  -  _  |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+	[_SYM] = LAYOUT(
+	KC_GRV,  KC_4,    KC_3,    KC_2,    KC_1,    KC_5,                                            KC_9,    KC_0,    KC_6,    KC_7,    KC_8,    _______,
+	KC_DEL,  KC_DLR,  KC_PLUS, KC_LPRN, KC_RPRN, KC_AT,                                           KC_PIPE, KC_MINS, KC_EQL,  KC_UNDS, KC_ASTR, _______,
+	_______, KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_TILD, _______, _______,     _______, _______, KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC, _______,
+							   _______, _______, _______, _______, _______,     _______, KC_BSPC, _______, _______, _______
+	),
+#endif
 /*
  * Nav Layer: Media, navigation
  *
@@ -108,18 +150,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, UNDO,    CUT,     COPY,    PASTE,   PTXT,    _______, KC_SLCK,     _______, SELWORD, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_INS,
                                    _______, _______, _______, _______, _______,     _______, _______, NUM,     _______, _______
     ),
+#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
     [_NUM] = LAYOUT(
         KC_F13,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,                                         KC_EQL,  KC_7,    KC_8,    KC_9,    KC_PLUS, KC_BSPC,
         KC_F14,  HOME_F5, HOME_F6, HOME_F7, HOME_F8, KC_DOT,                                          KC_ASTR, HOME_4,  HOME_5,  HOME_6,  HOME_MINS,_______,
         KC_F15,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______,     _______, _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_SLSH, KC_DOT,
                                    _______, _______, _______, _______, KC_BSPC,     _______, _______, _______, KC_DOT, _______
     ),
-    // [_WINMGMT] = LAYOUT(
-    //     _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______,                                         _______, DIVVY_U, DIVVY_I, DIVVY_O, _______, _______,
-    //     _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,                                         DIVVY_H, DIVVY_J, DIVVY_K, DIVVY_L, DIVVY_SCLN,DIVVY_PANEL,
-    //     _______, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, DIVVY_M, DIVVY_COMMA,DIVVY_DOT,_______, _______,
-    //                                _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
-    // ),
+#endif
+#ifdef ENABLE_WINMGMT_LAYER
+    [_WINMGMT] = LAYOUT(
+        _______, _______, KC_BTN1, KC_MS_U, KC_BTN2, _______,                                         _______, DIVVY_U, DIVVY_I, DIVVY_O, _______, _______,
+        _______, _______, KC_MS_L, KC_MS_D, KC_MS_R, _______,                                         DIVVY_H, DIVVY_J, DIVVY_K, DIVVY_L, DIVVY_SCLN,DIVVY_PANEL,
+        _______, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, DIVVY_M, DIVVY_COMMA,DIVVY_DOT,_______, _______,
+                                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+    ),
+#endif
 
 /*
  * Adjust Layer: Default layer settings, RGB
