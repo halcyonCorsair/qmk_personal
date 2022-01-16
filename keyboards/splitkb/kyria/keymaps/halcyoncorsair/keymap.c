@@ -41,7 +41,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_COLEMAK_DH] = LAYOUT(
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                            KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_PIPE,
         KC_ESC,  HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_G,                                            KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
+#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
         OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    SPOTLIGHT,NUM,        ONEPASS, ADJUST,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
+#else
+        OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    SPOTLIGHT,_______,    ONEPASS, ADJUST,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
+#endif
                                    ADJUST,  KC_MEH,  NAV,     KC_SPC,  KC_BSPC,     KC_TAB,  KC_ENT,  SYM,     REPEAT,  KC_MPLY
     ),
 
@@ -114,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * winter nebs: NUM/symb, swapped numbers
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |    `   |   1  |   2  |   3  |   4  |   5  |                              |   9  |   0  |   6  |   7  |   8  |  |  \  |
+ * |    `   |   4  |   3  |   2  |   1  |   5  |                              |   9  |   0  |   6  |   7  |   8  |  |  \  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |   DEL  |   $  |   +  |   (  |   )  |   @  |                              |   |  |   -  |   =  |   _  |   *  |  '  "  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
@@ -130,11 +134,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 							   _______, _______, _______, _______, _______,     _______, KC_BSPC, _______, _______, _______
 	),
 #endif
+#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
 /*
  * Nav Layer: Media, navigation
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Swap  |      |      |      |      |      |                              | PgUp | Home |   ↑  | End  | VolUp| Delete |
+ * |        |      |      |      |      |      |                              | PgUp | Home |   ↑  | End  | VolUp| Delete |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |        | Ctrl |  Alt | GUI  | Shift|      |                              | PgDn |  ←   |   ↓  |   →  | VolDn|Capslock|
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
@@ -150,12 +155,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         _______, UNDO,    CUT,     COPY,    PASTE,   PTXT,    _______, KC_SLCK,     _______, SELWORD, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_INS,
                                    _______, _______, _______, _______, _______,     _______, _______, NUM,     _______, _______
     ),
-#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
     [_NUM] = LAYOUT(
         KC_F13,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,                                         KC_EQL,  KC_7,    KC_8,    KC_9,    KC_PLUS, KC_BSPC,
         KC_F14,  HOME_F5, HOME_F6, HOME_F7, HOME_F8, KC_DOT,                                          KC_ASTR, HOME_4,  HOME_5,  HOME_6,  HOME_MINS,_______,
         KC_F15,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   _______, _______, _______,     _______, _______, KC_0,    KC_1,    KC_2,    KC_3,    KC_SLSH, KC_DOT,
                                    _______, _______, _______, _______, KC_BSPC,     _______, _______, _______, KC_DOT, _______
+    ),
+#else
+/*
+ * Nav Layer: Media, navigation
+ *
+ * ,------------------------------------------.                              ,-------------------------------------------.
+ * |  F13  |  F9  |  F10 |  F11 |  F12 |      |                              | PgUp | Home |   ↑  | End  | VolUp| Delete |
+ * |-------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |  F14  |F5/CTL|F6/ALT|F7/GUI|F8/SFT|      |                              | PgDn |  ←   |   ↓  |   →  | VolDn|Capslock|
+ * |-------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |  F15  |  F1  |  F2  |  F3  |  F4  |P-Text|      |      |  |      |Selwrd|  XXX |M Prev|M Play|M Next| Mute | Insert |
+ * `---------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                       |      |      |      |      |      |  |      |      |  Num |      |      |
+ *                       |      |      |      |      |      |  |      |      |      |      |      |
+ *                       `----------------------------------'  `----------------------------------'
+ */
+    [_NAV] = LAYOUT(
+        KC_F13,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,                                         KC_PGUP, MHOME,   KC_UP,   MEND,    KC_VOLU, KC_DEL,
+        KC_F14,  HOME_F5, HOME_F6, HOME_F7, HOME_F8, _______,                                         KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, KC_CAPS,  // KC_PSCR
+        KC_F15,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   PTXT,    _______, _______,     _______, SELWORD, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_INS,
+#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
+                                   _______, _______, _______, _______, _______,     _______, _______, NUM,     _______, _______
+#else
+                                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+#endif
     ),
 #endif
 #ifdef ENABLE_WINMGMT_LAYER
@@ -182,8 +211,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_ADJUST] = LAYOUT(
-        _______, _______, _______, QWERTY,  _______, _______,                                         _______, _______, _______, _______, _______, RESET,
-        _______, _______, _______, COLEMAK, _______, _______,                                         RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD, DEBUG,
+        _______, _______, _______, _______, _______, _______,                                         _______, _______, _______, _______, _______, RESET,
+        _______, _______, _______, COLEMAK, QWERTY,  _______,                                         RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD, DEBUG,
         _______, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD,_______,
                                    _______, _______, _______, _______, _______,     KC_BRID, KC_BRIU, _______, _______, _______
     ),

@@ -6,8 +6,12 @@
 #define COLEMAK  DF(_COLEMAK_DH)
 #define SYM      MO(_SYM)
 #define NAV      TT(_NAV)
-#define NUM      TT(_NUM)
-// #define DIVVY    MO(_WINMGMT)
+#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
+#   define NUM      TT(_NUM)
+#endif
+#ifdef ENABLE_WINMGMT_LAYER
+#   define DIVVY    MO(_WINMGMT)
+#endif
 #define ADJUST   MO(_ADJUST)
 #define NUM_SPC  LT(_NUM, KC_SPC)
 
