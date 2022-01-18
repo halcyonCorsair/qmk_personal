@@ -54,6 +54,12 @@
 #endif  // TAPPING_TERM
 #define TAPPING_TERM 200
 
+/* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
+#ifdef DEBOUNCE
+#    undef DEBOUNCE
+#endif
+#define DEBOUNCE        6   // Default for kyria is 5
+
 // Combos
 #define COMBO_ONLY_FROM_LAYER 0
 
