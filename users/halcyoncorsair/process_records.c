@@ -48,6 +48,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             break;
 #endif
 
+#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
         // symbol mod taps
         case LALT_T(KC_PIPE):
             if (record->tap.count) {
@@ -99,6 +100,58 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false;        // Return false to ignore further processing of key
             }
             break;
+#else
+        // symbol mod taps
+        case LCTL_T(KC_DLR):
+            if (record->tap.count) {
+                tap_code16(KC_DLR);
+                return false;
+            }
+            break;
+        case LALT_T(KC_PLUS):
+            if (record->tap.count) {
+                tap_code16(KC_PLUS);
+                return false;
+            }
+            break;
+        case LGUI_T(KC_LPRN):
+            if (record->tap.count) {
+                tap_code16(KC_LPRN);
+                return false;
+            }
+            break;
+        case LSFT_T(KC_RPRN):
+            if (record->tap.count) {
+                tap_code16(KC_RPRN);
+                return false;
+            }
+            break;
+
+        // case RSFT_T(KC_MINS):
+        //     if (record->tap.count) {
+        //         tap_code16(KC_MINS);
+        //         return false;
+        //     }
+        //     break;
+        // case RGUI_T(KC_EQL):
+        //     if (record->tap.count) {
+        //         tap_code16(KC_EQL);
+        //         return false;
+        //     }
+        //     break;
+        case LALT_T(KC_UNDS):
+            if (record->tap.count) {
+                tap_code16(KC_UNDS);
+                return false;
+            }
+            break;
+        case RCTL_T(KC_ASTR):
+            if (record->tap.count) {
+                tap_code16(KC_ASTR);
+                return false;
+            }
+            break;
+#endif
         }
     }
     return true;
