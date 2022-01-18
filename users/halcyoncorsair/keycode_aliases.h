@@ -33,10 +33,17 @@
 #define QHOME_F LSFT_T(KC_F)
 
 // Symbols
-#define HOME_BSLS LCTL_T(KC_BSLS)
-#define HOME_PIPE LALT_T(KC_PIPE)
-#define HOME_LCBR LGUI_T(KC_LCBR)
-#define HOME_LPRN LSFT_T(KC_LPRN)
+#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
+#   define HOME_BSLS LCTL_T(KC_BSLS)
+#   define HOME_PIPE LALT_T(KC_PIPE)
+#   define HOME_LCBR LGUI_T(KC_LCBR)
+#   define HOME_LPRN LSFT_T(KC_LPRN)
+#else
+#   define HOME_DLR  LCTL_T(KC_DLR)
+#   define HOME_PLUS LALT_T(KC_PLUS)
+#   define HOME_LPRN LGUI_T(KC_LPRN)
+#   define HOME_RPRN LSFT_T(KC_RPRN)
+#endif
 
 // Num
 #define HOME_F5 LCTL_T(KC_F5)
@@ -52,16 +59,23 @@
 #define HOME_O RCTL_T(KC_O)
 
 // Qwerty
-#define QHOME_J RSFT_T(KC_J)
-#define QHOME_K RGUI_T(KC_K)
-#define QHOME_L LALT_T(KC_L)
+#define QHOME_J    RSFT_T(KC_J)
+#define QHOME_K    RGUI_T(KC_K)
+#define QHOME_L    LALT_T(KC_L)
 #define QHOME_SCLN RCTL_T(KC_SCLN)
 
 // Symbols
-#define HOME_DLR RSFT_T(KC_DLR)
-#define HOME_PERC RGUI_T(KC_PERC)
-#define HOME_CIRC LALT_T(KC_CIRC)
-#define HOME_MINS RCTL_T(KC_MINS)
+#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
+#   define HOME_DLR  RSFT_T(KC_DLR)
+#   define HOME_PERC RGUI_T(KC_PERC)
+#   define HOME_CIRC LALT_T(KC_CIRC)
+#   define HOME_MINS RCTL_T(KC_MINS)
+#else
+#   define HOME_MINS RSFT_T(KC_MINS)
+#   define HOME_EQL  RGUI_T(KC_EQL)
+#   define HOME_UNDS LALT_T(KC_UNDS)
+#   define HOME_ASTR RCTL_T(KC_ASTR)
+#endif
 
 // Num
 #define HOME_4 RSFT_T(KC_4)
