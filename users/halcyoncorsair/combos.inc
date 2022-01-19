@@ -14,7 +14,7 @@ COMB(UY_COLON,              KC_COLN,             KC_U, KC_Y)
 COMB(PLOVER_QUESTION,       KC_QUES,             HOME_R, HOME_S, KC_U, KC_Y)
 COMB(PLOVER_EXCL,           KC_EXLM,             HOME_E, HOME_I, KC_W, KC_F)
 // COMB(PLOVER_RET,            KC_ENT,              HOME_N, HOME_T)     // Taken by caps word
-COMB(TV_ENT ,               KC_ENT,              HOME_T, KC_V)
+COMB(TV_ENT,                KC_ENT,              HOME_T, KC_V)
 COMB(HE_SLSH,               KC_SLSH,             KC_H, HOME_E)
 COMB(E_DOT_BSLS,            KC_BSLS,             HOME_E, KC_DOT)
 COMB(NH_PIPE,               KC_PIPE,             HOME_N, KC_H)
