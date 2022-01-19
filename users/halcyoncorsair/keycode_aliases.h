@@ -4,7 +4,7 @@
 // Layer switch aliases
 #define QWERTY   DF(_QWERTY)
 #define COLEMAK  DF(_COLEMAK_DH)
-#define SYM      MO(_SYM)
+#define SYM      TT(_SYM)
 #define NAV      TT(_NAV)
 #define ADJUST   MO(_ADJUST)
 #define NUM_SPC  LT(_NUM, KC_SPC)
