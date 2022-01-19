@@ -6,12 +6,6 @@
 #define COLEMAK  DF(_COLEMAK_DH)
 #define SYM      MO(_SYM)
 #define NAV      TT(_NAV)
-#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
-#   define NUM      TT(_NUM)
-#endif
-#ifdef ENABLE_WINMGMT_LAYER
-#   define DIVVY    MO(_WINMGMT)
-#endif
 #define ADJUST   MO(_ADJUST)
 #define NUM_SPC  LT(_NUM, KC_SPC)
 
@@ -33,17 +27,10 @@
 #define QHOME_F LSFT_T(KC_F)
 
 // Symbols
-#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
-#   define HOME_BSLS LCTL_T(KC_BSLS)
-#   define HOME_PIPE LALT_T(KC_PIPE)
-#   define HOME_LCBR LGUI_T(KC_LCBR)
-#   define HOME_LPRN LSFT_T(KC_LPRN)
-#else
-#   define HOME_DLR  LCTL_T(KC_DLR)
-#   define HOME_PLUS LALT_T(KC_PLUS)
-#   define HOME_LPRN LGUI_T(KC_LPRN)
-#   define HOME_RPRN LSFT_T(KC_RPRN)
-#endif
+#define HOME_DLR  LCTL_T(KC_DLR)
+#define HOME_PLUS LALT_T(KC_PLUS)
+#define HOME_LPRN LGUI_T(KC_LPRN)
+#define HOME_RPRN LSFT_T(KC_RPRN)
 
 // Num
 #define HOME_F5 LCTL_T(KC_F5)
@@ -65,17 +52,10 @@
 #define QHOME_SCLN RCTL_T(KC_SCLN)
 
 // Symbols
-#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
-#   define HOME_DLR  RSFT_T(KC_DLR)
-#   define HOME_PERC RGUI_T(KC_PERC)
-#   define HOME_CIRC LALT_T(KC_CIRC)
-#   define HOME_MINS RCTL_T(KC_MINS)
-#else
-#   define HOME_MINS RSFT_T(KC_MINS)
-#   define HOME_EQL  RGUI_T(KC_EQL)
-#   define HOME_UNDS LALT_T(KC_UNDS)
-#   define HOME_ASTR RCTL_T(KC_ASTR)
-#endif
+#define HOME_MINS RSFT_T(KC_MINS)
+#define HOME_EQL  RGUI_T(KC_EQL)
+#define HOME_UNDS LALT_T(KC_UNDS)
+#define HOME_ASTR RCTL_T(KC_ASTR)
 
 // Num
 #define HOME_4 RSFT_T(KC_4)
@@ -110,17 +90,15 @@
 #define SPOTLIGHT   LGUI(KC_SPC)
 #define ONEPASS     LAG(KC_BSLS)
 
-#ifdef ENABLE_WINMGMT_LAYER
-#   define DIVVY_PANEL MEH(KC_D)
-#   define DIVVY_U     MEH(KC_U)
-#   define DIVVY_I     MEH(KC_I)
-#   define DIVVY_O     MEH(KC_O)
-#   define DIVVY_H     MEH(KC_H)
-#   define DIVVY_J     MEH(KC_J)
-#   define DIVVY_K     MEH(KC_K)
-#   define DIVVY_L     MEH(KC_L)
-#   define DIVVY_SCLN  MEH(KC_SCLN)
-#   define DIVVY_M     MEH(KC_M)
-#   define DIVVY_COMMA MEH(KC_COMMA)
-#   define DIVVY_DOT   MEH(KC_DOT)
-#endif
+#define DIVVY_PANEL MEH(KC_D)
+#define DIVVY_U     MEH(KC_U)
+#define DIVVY_I     MEH(KC_I)
+#define DIVVY_O     MEH(KC_O)
+#define DIVVY_H     MEH(KC_H)
+#define DIVVY_J     MEH(KC_J)
+#define DIVVY_K     MEH(KC_K)
+#define DIVVY_L     MEH(KC_L)
+#define DIVVY_SCLN  MEH(KC_SCLN)
+#define DIVVY_M     MEH(KC_M)
+#define DIVVY_COMMA MEH(KC_COMMA)
+#define DIVVY_DOT   MEH(KC_DOT)

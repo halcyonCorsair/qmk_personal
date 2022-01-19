@@ -25,16 +25,6 @@ bool oled_task_user(void) {
         case _NAV:
             oled_write_P(PSTR("Nav\n"), false);
             break;
-#ifdef ENABLE_SYMBOL_LAYER_ORIGINAL
-        case _NUM:
-            oled_write_P(PSTR("Num\n"), false);
-            break;
-#endif
-#ifdef ENABLE_WINMGMT_LAYER
-        case _WINMGMT:
-            oled_write_P(PSTR("Divvy\n"), false);
-            break;
-#endif
         case _ADJUST:
             oled_write_P(PSTR("Adjust\n"), false);
             break;
