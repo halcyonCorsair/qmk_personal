@@ -40,6 +40,8 @@
 // Disable PERMISSIVE_HOLD
 #undef PERMISSIVE_HOLD
 
+#define LEADER_TIMEOUT 350
+
 // Other settings //
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 

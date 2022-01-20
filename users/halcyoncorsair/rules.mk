@@ -1,8 +1,5 @@
 # Build options
 
-SRC += halcyoncorsair.c \
-		process_records.c
-
 ENCODER_ENABLE ?= no
 ifeq ($(strip $(ENCODER_ENABLE)), yes)
 	SRC += encoder_config.c
@@ -38,3 +35,7 @@ ifeq ($(strip $(SELECT_WORD_ENABLE)), yes)
     SRC += features/select_word.c
     OPT_DEFS += -DSELECT_WORD_ENABLE
 endif
+
+SRC += halcyoncorsair.c \
+		matrix_scan.c \
+		process_records.c

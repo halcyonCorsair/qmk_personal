@@ -4,7 +4,7 @@
 bool is_alt_tab_active = false;
 uint16_t alt_tab_timer = 0;
 
-void matrix_scan_user(void) {
+void matrix_scan_encoder_alt_tab(void) {
     if (is_alt_tab_active) {
         if (timer_elapsed(alt_tab_timer) > 700) {
             #ifdef MAC_HOTKEYS

@@ -6,7 +6,7 @@ RGBLIGHT_ENABLE 	= no    # 2108  # Enable keyboard RGB underglow
 RGB_MATRIX_ENABLE 	= yes	# 2520
 
 COMBO_ENABLE 	  	= yes
-# LEADER_ENABLE		= no	# 162
+LEADER_ENABLE		= yes	# 162
 NKRO_ENABLE 	  	= yes	# 316
 # SWAP_HANDS_ENABLE   = no    # 570
 
