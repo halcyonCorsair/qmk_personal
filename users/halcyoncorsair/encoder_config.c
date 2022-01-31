@@ -1,23 +1,6 @@
 #include "encoder_config.h"
 
 #ifdef ENCODER_ENABLE
-bool is_alt_tab_active = false;
-uint16_t alt_tab_timer = 0;
-
-void matrix_scan_user(void) {
-    if (is_alt_tab_active) {
-        if (timer_elapsed(alt_tab_timer) > 700) {
-            #ifdef MAC_HOTKEYS
-                register_code(KC_LGUI);
-            #else
-                register_code(KC_LALT);
-            #endif
-            unregister_code(KC_LGUI);
-            is_alt_tab_active = false;
-        }
-    }
-}
-
 bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {           // Left - Industrial encoder
         if (layer_state_is(_SYM)) {
@@ -38,28 +21,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     } else if (index == 1) {    // Right - Linear encoder
         if (layer_state_is(_NAV)) {
             if (clockwise) {
-                if (!is_alt_tab_active) {
-                    is_alt_tab_active = true;
-                    #ifdef MAC_HOTKEYS
-                        register_code(KC_LGUI);
-                    #else
-                        register_code(KC_LALT);
-                    #endif
-                }
-                alt_tab_timer = timer_read();
-                tap_code16(KC_TAB);
+                tap_code16(LALT(KC_LEFT));
             } else {
-                if (!is_alt_tab_active) {
-                    is_alt_tab_active = true;
-                    register_code(KC_LGUI);
-                    #ifdef MAC_HOTKEYS
-                        register_code(KC_LGUI);
-                    #else
-                        register_code(KC_LALT);
-                    #endif
-                }
-                alt_tab_timer = timer_read();
-                tap_code16(S(KC_TAB));
+                tap_code16(LALT(KC_RIGHT));
             }
         } else {
             // Volume control
