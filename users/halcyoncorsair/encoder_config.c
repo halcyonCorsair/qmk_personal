@@ -21,9 +21,9 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
     } else if (index == 1) {    // Right - Linear encoder
         if (layer_state_is(_NAV)) {
             if (clockwise) {
-                tap_code16(LALT(KC_LEFT));
-            } else {
                 tap_code16(LALT(KC_RIGHT));
+            } else {
+                tap_code16(LALT(KC_LEFT));
             }
         } else {
             // Volume control
