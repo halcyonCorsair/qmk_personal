@@ -94,6 +94,9 @@
 #undef LOCKING_RESYNC_ENABLE
 
 #ifdef RGB_MATRIX_ENABLE
+#   undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
+#   define RGB_MATRIX_MAXIMUM_BRIGHTNESS   150
+
 // #undef ENABLE_RGB_MATRIX_ALPHAS_MODS
 // #undef ENABLE_RGB_MATRIX_GRADIENT_UP_DOWN
 // #undef ENABLE_RGB_MATRIX_GRADIENT_LEFT_RIGHT
@@ -146,5 +149,5 @@
 #   define RGB_MATRIX_STARTUP_SAT 255
 #   define RGB_MATRIX_STARTUP_SPD 127
 #   undef RGB_DISABLE_WHEN_USB_SUSPENDED
-#   define RGB_DISABLE_TIMEOUT 10000 // number of milliseconds to wait until rgb automatically turns off
+#   define RGB_DISABLE_TIMEOUT 0 // number of milliseconds to wait until rgb automatically turns off
 #endif
