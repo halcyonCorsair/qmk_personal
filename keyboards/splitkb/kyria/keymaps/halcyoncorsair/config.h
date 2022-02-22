@@ -58,7 +58,7 @@
 #ifdef DEBOUNCE
 #    undef DEBOUNCE
 #endif
-#define DEBOUNCE 3 // 6   // Default for kyria is 5
+#define DEBOUNCE 10     // Default for kyria is 5
 
 // Combos
 #define COMBO_ONLY_FROM_LAYER 0
