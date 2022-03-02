@@ -14,6 +14,20 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+    /*
+        BASE LAYER
+    /---------------------------------------`
+    |Play/Pause|        |         |         |
+    |---------|---------|---------|---------|
+    |    7    |    8    |    9    |  Bkspc  |
+    |---------|---------|---------|---------|
+    |    4    |    5    |    6    |   Esc   |
+    |---------|---------|---------|---------|
+    |    1    |    2    |    3    |   Tab   |
+    |---------|---------|---------|---------|
+    |  TT(1)  |    0    |    .    |  Enter  |
+    \---------------------------------------'
+    */
     [_BASE] = LAYOUT_oled_top(
         KC_MPLY,
         KC_P7,      KC_P8,      KC_P9,      KC_BSPC,
@@ -22,6 +36,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TT(_FUNC),  KC_P0,      KC_PDOT,    KC_KP_ENTER
     ),
 
+    /*
+        FUNCTION LAYER
+    /---------------------------------------`
+    |Play/Pause|        |         |         |
+    |---------|---------|---------|---------|
+    |  Prev   |  Next   |    \    |    +    |
+    |---------|---------|---------|---------|
+    | g:push  | g:pull  |g:status |    -    |
+    |---------|---------|---------|---------|
+    | g:add   |g:commit | g:diff  |    -    |
+    |---------|---------|---------|---------|
+    |         |         |g:diffc  |    =    |
+    \---------------------------------------'
+    */
     [_FUNC] = LAYOUT_oled_top(
         _______,
         KC_MPRV,    KC_MNXT,    KC_KP_SLASH,KC_KP_ASTERISK,
