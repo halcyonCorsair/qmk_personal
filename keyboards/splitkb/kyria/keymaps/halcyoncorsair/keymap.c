@@ -177,9 +177,6 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
         case QK_LAYER_TAP ... QK_LAYER_TAP_MAX:
             // Immediately select the hold action when another key is pressed.
             return true;
-        case HOME_T:
-        case HOME_N:
-            return true;
         default:
             // Do not select the hold action when another key is pressed.
             return false;
@@ -198,6 +195,9 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case HOME_O:
         case QHOME_S:
             return TAPPING_TERM + 30;
+        case HOME_T:
+        case HOME_N:
+            return TAPPING_TERM - 20;
         // case SYM_ENT:
         //     // Very low tapping term to make sure I don't hit Enter accidentally.
         //     return TAPPING_TERM - 85;
