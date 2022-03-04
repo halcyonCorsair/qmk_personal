@@ -41,9 +41,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     /---------------------------------------`
     |Play/Pause|        |         |         |
     |---------|---------|---------|---------|
-    |  Prev   |  Next   |    \    |    +    |
+    |  Prev   |  Next   |    /    |    *    |
     |---------|---------|---------|---------|
-    | g:push  | g:pull  |g:status |    -    |
+    | g:push  | g:pull  |g:status |    +    |
     |---------|---------|---------|---------|
     | g:add   |g:commit | g:diff  |    -    |
     |---------|---------|---------|---------|
@@ -122,7 +122,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING("git status\n");
         }
         break;
-
     }
 
     return true;
