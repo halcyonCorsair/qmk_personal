@@ -1,28 +1,11 @@
-/* Copyright 2021 Jay Greco
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 #include QMK_KEYBOARD_H
-// #include "action_layer.h"
+#include "action_layer.h"
 
 enum layer_names {
   _BASE,
-  _FUNC,
-  _MACROS
+  _MACROS,
+  _FUNC
 };
-
 
 enum custom_keycodes {
     GITPUSH = SAFE_RANGE,
@@ -47,26 +30,26 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // Base layer (numpad)
   [_BASE] = LAYOUT(
-                KC_MPLY,  KC_PSLS,    KC_KP_ASTERISK,
-    KC_KP_7,    KC_KP_8,  KC_KP_9,    KC_KP_PLUS,
-    KC_KP_4,    KC_KP_5,  KC_KP_6,    KC_KP_MINUS,
-    KC_KP_1,    KC_KP_2,  KC_KP_3,    KC_PENT,
-    TT(_FUNC),  KC_KP_0,  KC_KP_DOT,  KC_BSPC
+                  KC_MPLY,  KC_PSLS,    KC_KP_ASTERISK,
+    KC_KP_7,      KC_KP_8,  KC_KP_9,    KC_KP_PLUS,
+    KC_KP_4,      KC_KP_5,  KC_KP_6,    KC_KP_MINUS,
+    KC_KP_1,      KC_KP_2,  KC_KP_3,    KC_PENT,
+    OSL(_MACROS), KC_KP_0,  KC_KP_DOT,  KC_PENT
+  ),
+  [_MACROS] = LAYOUT(
+                KC_NO,      KC_NO,      KC_BSPC,
+    KC_MPRV,    KC_MNXT,    KC_NO,      KC_ESC,
+    GITPUSH,    GITPULL,    GITSTATUS,  KC_TAB,
+    GITADD,     GITCOMMIT,  GITDIFF,    KC_PENT,
+    _______,    XXXXXXX,    GITDC,      TG(_FUNC)
   ),
   // Function layer (numpad)
   [_FUNC] = LAYOUT(
-              KC_NO,  RGB_TOG,  KC_BSPC,
-    KC_NO,    KC_NO,  RGB_MOD,  KC_ESC,
-    KC_NO,    KC_NO,  RGB_HUI,  KC_TAB,
-    KC_NO,    KC_NO,  RGB_SAI,  KC_PENT,
-    _______,  KC_NO,  RGB_VAI,  TT(_MACROS)
-  ),
-  [_MACROS] = LAYOUT(
-              KC_NO,  KC_NO,    KC_NO,
-    KC_NO,    KC_NO,  KC_NO,    KC_NO,
-    KC_NO,    KC_NO,  KC_NO,    KC_NO,
-    KC_NO,    KC_NO,  KC_NO,    KC_NO,
-    _______,  KC_NO,  KC_NO,    KC_NO
+              KC_NO,    RGB_TOG,  KC_BSPC,
+    KC_NO,    RGB_RMOD, RGB_MOD,  KC_ESC,
+    KC_NO,    RGB_HUD,  RGB_HUI,  KC_TAB,
+    KC_NO,    RGB_SAD,  RGB_SAI,  KC_PENT,
+    _______,  RGB_VAD,  RGB_VAI,  TG(_FUNC)
   ),
 };
 
@@ -81,11 +64,11 @@ bool oled_task_user(void) {
         case _BASE:
             oled_write_P(PSTR("Base"), false);
             break;
+        case _MACROS:
+            oled_write_P(PSTR("Macros"), false);
+            break;
         case _FUNC:
             oled_write_P(PSTR("Function"), false);
-            break;
-        case _MACROS:
-            oled_write_P(PSTR("Macrps"), false);
             break;
         default:
             oled_write_P(PSTR("Undefined"), false);
@@ -98,29 +81,25 @@ bool oled_task_user(void) {
 }
 #endif
 
-void matrix_init_user(void) { matrix_init_remote_kb(); }
-
-void matrix_scan_user(void) { matrix_scan_remote_kb(); }
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     process_record_remote_kb(keycode, record);
 
     switch (keycode) {
         case GITPUSH:
             if (record->event.pressed) {
-                SEND_STRING("git push\n");
+                SEND_STRING("git push");
             }
             break;
 
         case GITPULL:
             if (record->event.pressed) {
-                SEND_STRING("git pull\n");
+                SEND_STRING("git pull");
             }
             break;
 
         case GITADD:
             if (record->event.pressed) {
-                SEND_STRING("git add --all\n");
+                SEND_STRING("git add --all");
             }
             break;
 
@@ -132,19 +111,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
         case GITDIFF:
             if (record->event.pressed) {
-                SEND_STRING("git diff\n");
+                SEND_STRING("git diff");
             }
             break;
 
         case GITDC:
             if (record->event.pressed) {
-                SEND_STRING("git diff --cached\n");
+                SEND_STRING("git diff --cached");
             }
             break;
 
         case GITSTATUS:
             if (record->event.pressed) {
-                SEND_STRING("git status\n");
+                SEND_STRING("git status");
             }
             break;
 
@@ -161,11 +140,4 @@ bool encoder_update_user(uint8_t index, bool clockwise) {
         tap_code(KC_VOLD);
     }
     return true;
-}
-
-void led_set_kb(uint8_t usb_led) {
-    if (usb_led & (1 << USB_LED_NUM_LOCK))
-        set_bitc_LED(LED_DIM);
-    else
-        set_bitc_LED(LED_OFF);
 }
