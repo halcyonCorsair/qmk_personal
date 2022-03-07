@@ -1,5 +1,7 @@
 #include "caps_word.h"
 
+static bool caps_word_on;
+
 // CAPS_WORD: A "smart" Caps Lock key that only capitalizes the next identifier you type
 // and then toggles off Caps Lock automatically when you're done.
 void caps_word_enable(void) {
@@ -68,4 +70,8 @@ void process_caps_word(uint16_t keycode, const keyrecord_t *record) {
                 break;
         }
     }
+}
+
+bool is_caps_word_enabled(void) {
+    return caps_word_on;
 }

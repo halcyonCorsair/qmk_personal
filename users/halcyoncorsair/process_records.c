@@ -37,7 +37,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #   endif
             // Toggle `caps_word_on`
             if (record->event.pressed) {
-                if (caps_word_on) {
+                if (is_caps_word_enabled()) {
                     caps_word_disable();
                     return false;
                 } else {
