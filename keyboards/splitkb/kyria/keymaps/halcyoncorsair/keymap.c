@@ -39,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_COLEMAK_DH] = LAYOUT(
-        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                            KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSLS,
+        KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                            KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT           , KC_BSLS,
         KC_ESC,  HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_G,                                            KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
         OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    SPOTLIGHT,_______,    ONEPASS, ADJUST,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
                                    ADJUST,  KC_MEH,  NAV,     KC_SPC,  KC_BSPC,     KC_TAB,  KC_ENT,  SYM,     REPEAT,  KC_MPLY
@@ -104,7 +104,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_SYM] = LAYOUT(
         KC_GRV,  KC_4,    KC_3,    KC_2,    KC_1,    KC_5,                                            KC_9,    KC_0,    KC_6,    KC_7,    KC_8,    _______,
         KC_DEL,  HOME_DLR,HOME_PLUS,HOME_LPRN,HOME_RPRN,KC_AT,                                        KC_PIPE, HOME_MINS,HOME_EQL,HOME_UNDS,HOME_ASTR,_______,
-        _______, KC_EXLM, KC_HASH, KC_LCBR, KC_RCBR, KC_TILD, _______, _______,     _______, _______, KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC, _______,
+        _______, KC_EXLM, KC_SCLN, KC_LCBR, KC_RCBR, KC_TILD, _______, _______,     _______, _______, KC_AMPR, KC_LBRC, KC_RBRC, KC_PERC, KC_CIRC, _______,
                                    _______, SH_OS,   _______, _______, _______,     _______, _______, _______, _______, _______
     ),
 /*
