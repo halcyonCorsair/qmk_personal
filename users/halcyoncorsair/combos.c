@@ -81,3 +81,23 @@ void process_combo_event(uint16_t combo_index, bool pressed) {
 		#include COMBOS_DEF
 	}
 }
+
+uint16_t get_combo_term(uint16_t index, combo_t *combo) {
+    switch (combo->keycode) {
+    case PASTE:
+    case KC_LBRC:
+    case KC_RBRC:
+    case KC_SLSH:
+        return COMBO_TERM - 10;
+        break;
+
+    case KC_QUES:
+    case KC_EXLM:
+        return COMBO_TERM + 10;
+        break;
+
+    default:
+        return COMBO_TERM;
+        break;
+    }
+}

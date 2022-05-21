@@ -62,6 +62,8 @@
 
 // Combos
 #define COMBO_ONLY_FROM_LAYER 0
+#define COMBO_TERM 30
+#define COMBO_TERM_PER_COMBO
 
 // Rotary encoders
 #define ENCODER_DIRECTION_FLIP
