@@ -21,10 +21,10 @@ ifeq ($(strip $(COMBO_ENABLE)), yes)
 endif
 
 
-CAPS_WORD_ENABLE ?= no
-ifeq ($(strip $(CAPS_WORD_ENABLE)), yes)
+MY_CAPS_WORD_ENABLE ?= no
+ifeq ($(strip $(MY_CAPS_WORD_ENABLE)), yes)
 	SRC += features/caps_word.c
-    OPT_DEFS += -DCAPS_WORD_ENABLE
+    OPT_DEFS += -DMY_CAPS_WORD_ENABLE
 endif
 
 REPEAT_KEY_ENABLE ?= no

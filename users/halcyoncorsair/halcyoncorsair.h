@@ -1,7 +1,7 @@
 #pragma once
 #include QMK_KEYBOARD_H
 #include "keycode_aliases.h"
-#ifdef CAPS_WORD_ENABLE
+#ifdef MY_CAPS_WORD_ENABLE
 #    include "features/caps_word.h"
 #endif
 #ifdef REPEAT_KEY_ENABLE
@@ -31,9 +31,9 @@ enum layers {
 
 enum custom_keycodes {
 #if defined(KEYBOARD_moonlander)
-    CAPS_WORD = ML_SAFE_RANGE,
+    MY_CAPS_WORD = ML_SAFE_RANGE,
 #else
-    CAPS_WORD = SAFE_RANGE,
+    MY_CAPS_WORD = SAFE_RANGE,
 #endif
     REPEAT,
     SELWORD,

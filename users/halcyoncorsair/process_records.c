@@ -15,7 +15,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
          record->tap.count
     );
 #endif
-#ifdef CAPS_WORD_ENABLE
+#ifdef MY_CAPS_WORD_ENABLE
     process_caps_word(keycode, record);
 #endif
 #ifdef REPEAT_KEY_ENABLE
@@ -30,10 +30,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
             return false;
 
-#ifdef CAPS_WORD_ENABLE
-        case CAPS_WORD:
+#ifdef MY_CAPS_WORD_ENABLE
+        case MY_CAPS_WORD:
 #   ifdef CONSOLE_ENABLE
-            uprintf("pru: Activate CAPS_WORD\n");
+            uprintf("pru: Activate MY_CAPS_WORD\n");
 #   endif
             // Toggle `caps_word_on`
             if (record->event.pressed) {

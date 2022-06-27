@@ -51,7 +51,7 @@ void process_caps_word(uint16_t keycode, const keyrecord_t *record) {
             case KC_UNDS:
             case KC_PIPE:
             case REPEAT:
-            case CAPS_WORD:
+            case MY_CAPS_WORD:
             case OS_LSFT:
             case OS_RSFT:
             case KC_LPRN:
