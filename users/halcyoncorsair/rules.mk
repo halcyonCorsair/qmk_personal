@@ -1,5 +1,7 @@
 # Build options
 
+VPATH += keyboards/gboards
+
 SRC += halcyoncorsair.c \
 		process_records.c
 
