@@ -43,12 +43,12 @@
 #define COMBO_ONLY_FROM_LAYER 0
 
 // #define RGB_DISABLE_TIMEOUT 0 // number of milliseconds to wait until rgb automatically turns off
-// #define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT // Sets the default mode, if none has been set
-#define RGB_MATRIX_STARTUP_VAL 128
-#define RGB_MATRIX_STARTUP_HUE 0
-#define RGB_MATRIX_STARTUP_SAT 255
+// #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT // Sets the default mode, if none has been set
+#define RGB_MATRIX_DEFAULT_VAL 128
+#define RGB_MATRIX_DEFAULT_HUE 0
+#define RGB_MATRIX_DEFAULT_SAT 255
 // #define RGB_DISABLE_WHEN_USB_SUSPENDED true
-#define RGB_MATRIX_STARTUP_SPD 127
+#define RGB_MATRIX_DEFAULT_SPD 127
 
 #define DISABLE_RGB_MATRIX_ALPHAS_MODS
 #define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN

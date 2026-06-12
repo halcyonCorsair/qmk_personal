@@ -70,12 +70,12 @@
 #   undef RGB_MATRIX_MAXIMUM_BRIGHTNESS
 #   define RGB_MATRIX_MAXIMUM_BRIGHTNESS   50 // same as bkb default
 
-// #   define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_RAINBOW_MOVING_CHEVRON // Sets the default mode, if none has been set
-#   undef RGB_MATRIX_STARTUP_VAL
-#   define RGB_MATRIX_STARTUP_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // same as bkb default
-#   define RGB_MATRIX_STARTUP_HUE 0
-#   define RGB_MATRIX_STARTUP_SAT 255
-#   define RGB_MATRIX_STARTUP_SPD 127
+// #   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_RAINBOW_MOVING_CHEVRON // Sets the default mode, if none has been set
+#   undef RGB_MATRIX_DEFAULT_VAL
+#   define RGB_MATRIX_DEFAULT_VAL RGB_MATRIX_MAXIMUM_BRIGHTNESS // same as bkb default
+#   define RGB_MATRIX_DEFAULT_HUE 0
+#   define RGB_MATRIX_DEFAULT_SAT 255
+#   define RGB_MATRIX_DEFAULT_SPD 127
 // #   undef RGB_DISABLE_WHEN_USB_SUSPENDED
 // #   define RGB_DISABLE_TIMEOUT 0 // number of milliseconds to wait until rgb automatically turns off
 #endif
