@@ -38,7 +38,8 @@
 #undef PERMISSIVE_HOLD
 
 // Other settings //
-#define HOLD_ON_OTHER_KEY_PRESS
+// TODO: review this setting
+// #define HOLD_ON_OTHER_KEY_PRESS
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 #define TAPPING_TOGGLE 2
