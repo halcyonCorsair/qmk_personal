@@ -13,6 +13,7 @@ SWAP_HANDS_ENABLE	= no    # 570
 
 # Userspace features
 CAPS_WORD_ENABLE	= yes
+# TODO - repeat is also messed up
 REPEAT_KEY_ENABLE	= no # 276
 # TODO - fix select word
 SELECT_WORD_ENABLE	= no
