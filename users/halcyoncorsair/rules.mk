@@ -20,19 +20,6 @@ ifeq ($(strip $(COMBO_ENABLE)), yes)
 	SRC += combos.c
 endif
 
-
-MY_CAPS_WORD_ENABLE ?= no
-ifeq ($(strip $(MY_CAPS_WORD_ENABLE)), yes)
-	SRC += features/caps_word.c
-    OPT_DEFS += -DMY_CAPS_WORD_ENABLE
-endif
-
-REPEAT_KEY_ENABLE ?= no
-ifeq ($(strip $(REPEAT_KEY_ENABLE)), yes)
-	SRC += features/repeat_key.c
-    OPT_DEFS += -DREPEAT_KEY_ENABLE
-endif
-
 SELECT_WORD_ENABLE ?= no
 ifeq ($(strip $(SELECT_WORD_ENABLE)), yes)
     SRC += features/select_word.c

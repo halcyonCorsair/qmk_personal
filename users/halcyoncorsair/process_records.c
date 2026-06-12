@@ -15,12 +15,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
          record->tap.count
     );
 #endif
-#ifdef MY_CAPS_WORD_ENABLE
-    process_caps_word(keycode, record);
-#endif
-#ifdef REPEAT_KEY_ENABLE
-    process_repeat_key(keycode, record);
-#endif
 #ifdef SELECT_WORD_ENABLE
     if (!process_select_word(keycode, record, SELWORD)) { return false; }
 #endif
@@ -29,24 +23,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case VRSN:
             SEND_STRING (QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
             return false;
-
-#ifdef MY_CAPS_WORD_ENABLE
-        case MY_CAPS_WORD:
-#   ifdef CONSOLE_ENABLE
-            uprintf("pru: Activate MY_CAPS_WORD\n");
-#   endif
-            // Toggle `caps_word_on`
-            if (record->event.pressed) {
-                if (is_caps_word_enabled()) {
-                    caps_word_disable();
-                    return false;
-                } else {
-                    caps_word_enable();
-                    return false;
-                }
-            }
-            break;
-#endif
 
         // symbol mod taps
         case LCTL_T(KC_DLR):
