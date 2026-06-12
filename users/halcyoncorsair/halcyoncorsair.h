@@ -24,7 +24,7 @@ enum layers {
 };
 
 enum custom_keycodes {
-    REPEAT,
+    REPEAT = SAFE_RANGE,
     SELWORD,
     VRSN,
 };
