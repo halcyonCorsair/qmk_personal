@@ -2,8 +2,8 @@ OLED_ENABLE			= yes # Enables the use of OLED displays
 
 ENCODER_ENABLE		= yes   	# 1018 (with my config)	# Enables the use of one or more encoders
 
-RGBLIGHT_ENABLE		= no    # 2108  # Enable keyboard RGB underglow
-RGB_MATRIX_ENABLE	= yes	# 2520
+RGBLIGHT_ENABLE		= yes	# 2108  # Enable keyboard RGB underglow
+RGB_MATRIX_ENABLE	= no    # 2520
 
 COMBO_ENABLE		= yes
 LEADER_ENABLE		= no	# 162

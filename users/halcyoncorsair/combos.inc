@@ -57,7 +57,7 @@ COMB(NUM8,                  KC_P8,               KC_SPC, KC_U)
 COMB(NUM9,                  KC_P9,               KC_SPC, KC_Y)
 
 // Functions
-COMB(TN_CAPS_WORD,          QK_CAPS_WORD_TOGGLE,        HOME_T, HOME_N)
+COMB(TN_CAPS_WORD,          CW_TOGG,        HOME_T, HOME_N)
 COMB(GM_CAPS_LOCK,          KC_CAPS,             KC_G, KC_M)
 COMB(ZX_UNDO,               UNDO,                KC_Z, KC_X)
 COMB(XD_CUT,                CUT,                 KC_X, KC_D)
