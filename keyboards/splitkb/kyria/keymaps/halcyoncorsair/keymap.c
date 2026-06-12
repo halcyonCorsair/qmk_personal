@@ -15,8 +15,8 @@
  */
 #include QMK_KEYBOARD_H
 #include "version.h"
-#include "g/keymap_combo.h"
 #include "halcyoncorsair.h"
+#include "g/keymap_combo.h"
 #ifdef CONSOLE_ENABLED
     #include "print.h"
 #endif
