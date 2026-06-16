@@ -88,6 +88,7 @@
 
 // App shortcuts
 #define SPOTLIGHT   LGUI(KC_SPC)
+#define ALFRED      RCTL(KC_SPC)
 #define ONEPASS     LAG(KC_BSLS)
 
 #define DIVVY_PANEL MEH(KC_D)
