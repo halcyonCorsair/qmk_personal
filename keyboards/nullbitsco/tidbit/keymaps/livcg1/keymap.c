@@ -45,11 +45,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   // Function layer (numpad)
   [_FUNC] = LAYOUT(
-              KC_NO,    RGB_TOG,  KC_BSPC,
-    KC_NO,    RGB_RMOD, RGB_MOD,  KC_ESC,
-    KC_NO,    RGB_HUD,  RGB_HUI,  KC_TAB,
-    KC_NO,    RGB_SAD,  RGB_SAI,  KC_PENT,
-    _______,  RGB_VAD,  RGB_VAI,  TG(_FUNC)
+              KC_NO,    UG_TOGG,  KC_BSPC,
+    KC_NO,    UG_PREV,  UG_NEXT,  KC_ESC,
+    KC_NO,    UG_HUED,  UG_HUEU,  KC_TAB,
+    KC_NO,    UG_SATD,  UG_SATU,  KC_PENT,
+    _______,  UG_VALD,  UG_VALU,  TG(_FUNC)
   ),
 };
 
