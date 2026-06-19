@@ -152,7 +152,7 @@
 #    undef     RGB_MATRIX_RIVERFLOW           // Modification to breathing animation, offset's animation depending on key location to simulate a river flowing
 #    undef     RGB_MATRIX_EFFECT_MAX
 
-#   define ENABLE_RGB_MATRIX_BREATHING                 // 338
+// #   define ENABLE_RGB_MATRIX_BREATHING                 // 338
 // Turn off to make space for debug
 // #   define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON    // 178
 
