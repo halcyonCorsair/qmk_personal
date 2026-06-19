@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "action_layer.h"
+#include "common/remote_kb.h"
 
 enum layer_names {
   _BASE,
@@ -22,7 +23,7 @@ enum td_keycodes {
 };
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     // Tap once for KP_ENTER, twice for _FUNC layer
     [TD_ENTER_LAYER] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_KP_ENTER, 1),
 };

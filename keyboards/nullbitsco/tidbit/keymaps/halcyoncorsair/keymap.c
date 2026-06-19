@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 #include "action_layer.h"
+#include "common/remote_kb.h"
 
 enum layer_names {
   _BASE,
@@ -22,7 +23,7 @@ enum td_keycodes {
 };
 
 // Tap Dance definitions
-qk_tap_dance_action_t tap_dance_actions[] = {
+tap_dance_action_t tap_dance_actions[] = {
     // Tap once for KP_ENTER, twice for _FUNC layer
     [TD_ENTER_LAYER] = ACTION_TAP_DANCE_LAYER_TOGGLE(KC_KP_ENTER, 1),
 };
@@ -45,12 +46,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   // Function layer (numpad)
   [_FUNC] = LAYOUT(
-              KC_NO,    RGB_TOG,  KC_BSPC,
-    KC_NO,    RGB_RMOD, RGB_MOD,  KC_ESC,
-    KC_NO,    RGB_HUD,  RGB_HUI,  KC_TAB,
-    KC_NO,    RGB_SAD,  RGB_SAI,  KC_PENT,
-    _______,  RGB_VAD,  RGB_VAI,  TG(_FUNC)
-  ),
+              KC_NO,    UG_TOGG,  KC_BSPC,
+    KC_NO,    UG_PREV,  UG_NEXT,  KC_ESC,
+    KC_NO,    UG_HUED,  UG_HUEU,  KC_TAB,
+    KC_NO,    UG_SATD,  UG_SATU,  KC_PENT,
+    _______,  UG_VALD,  UG_VALU,  TG(_FUNC)
+),
 };
 
 #ifdef OLED_ENABLE
