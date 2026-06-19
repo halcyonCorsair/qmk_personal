@@ -20,7 +20,9 @@ SELECT_WORD_ENABLE	= no
 
 # Need to reduce firmware size
 LTO_ENABLE			= yes
-CONSOLE_ENABLE		= no
+##
+CONSOLE_ENABLE		= yes
+##
 COMMAND_ENABLE		= no
 MOUSEKEY_ENABLE		= no
 # EXTRAKEY_ENABLE = no // this includes media keys and system volume control

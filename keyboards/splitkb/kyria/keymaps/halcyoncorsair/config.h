@@ -153,7 +153,8 @@
 #    undef     RGB_MATRIX_EFFECT_MAX
 
 #   define ENABLE_RGB_MATRIX_BREATHING                 // 338
-#   define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON    // 178
+// Turn off to make space for debug
+// #   define ENABLE_RGB_MATRIX_RAINBOW_MOVING_CHEVRON    // 178
 
 // #   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_RAINBOW_MOVING_CHEVRON // Sets the default mode, if none has been set
 #   define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_SOLID_COLOR // Sets the default mode, if none has been set
