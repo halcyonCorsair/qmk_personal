@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,    UG_HUED,  UG_HUEU,  KC_TAB,
     KC_NO,    UG_SATD,  UG_SATU,  KC_PENT,
     _______,  UG_VALD,  UG_VALU,  TG(_FUNC)
-),
+  ),
 };
 
 #ifdef OLED_ENABLE
