@@ -8,5 +8,6 @@
 #endif  // TAPPING_TERM
 #define TAPPING_TERM 200
 
-#define ENCODERS_PAD_A { B3 }
-#define ENCODERS_PAD_B { B2 }
+// already defined in the tidbit keyboard.json
+// #define ENCODERS_PAD_A { B3 }
+// #define ENCODERS_PAD_B { B2 }
