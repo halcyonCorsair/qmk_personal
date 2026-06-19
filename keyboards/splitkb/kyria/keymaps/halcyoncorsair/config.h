@@ -166,3 +166,5 @@
 #   undef RGB_DISABLE_WHEN_USB_SUSPENDED
 #   define RGB_DISABLE_TIMEOUT 0 // number of milliseconds to wait until rgb automatically turns off
 #endif
+
+#define SELECT_WORD_OS_MAC

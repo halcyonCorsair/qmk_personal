@@ -22,9 +22,6 @@
 
 #define TAPPING_TERM_PER_KEY // See bottom of keymap.c
 
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
-
 // This prevents accidental repeats of the tap-hold keys when typing quickly.
 #define TAPPING_FORCE_HOLD_PER_KEY
 
@@ -32,6 +29,7 @@
 #undef PERMISSIVE_HOLD
 
 // Other settings //
+#define HOLD_ON_OTHER_KEY_PRESS
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 #define TAPPING_TOGGLE 2
@@ -95,3 +93,5 @@
 #define DISABLE_RGB_MATRIX_MULTISPLASH
 #define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
+
+#define SELECT_WORD_OS_MAC

@@ -48,27 +48,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    ADJUST,  KC_MEH,  NAV,     KC_SPC,  KC_BSPC,     KC_TAB,  KC_ENT,  SYM,     QK_REP,  KC_MPLY
     ),
 
-/*
- * Base Layer: QWERTY
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |        |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |A/Ctrl| S/Alt| D/GUI| F/SFT|   G  |                              |   H  | J/SFT| K/GUI| L/Alt|;:/Ctrl|       |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |   Z  |   X  |   C  |   V  |   B  |      |      |  |      |      |   N  |   M  | ,  < | . >  | /  ? |        |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
-    [_QWERTY] = LAYOUT(
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-        KC_ESC,  HOME_A,  QHOME_S, QHOME_D, QHOME_F, KC_G,                                            KC_H,    QHOME_J, QHOME_K, QHOME_L, QHOME_SCLN,KC_QUOT,
-        OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _______, _______,     _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-                                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
-    ),
-
 // NOTE: swap hands is currently not enabled due to memory requirements
 // #ifdef ENABLE_SYMBOL_LAYER_TBAART
 // /*
@@ -135,9 +114,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Adjust Layer: Default layer settings, RGB
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              |      |      |      |      |      | RESET  |
+ * |        |      |      |Kb Reboot|      |Debug|                              |      |      |      |      |      | RESET  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |      |      |Colmak|QWERTY|      |                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
+ * |        |      |      |Version|     |      |                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |      |  |      |      |      | SAD  | HUD  | VAD  | RMOD |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -147,7 +126,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_ADJUST] = LAYOUT(
         QK_BOOT, _______, _______, QK_RBT,  _______, DB_TOGG,                                         _______, _______, _______, _______, _______, QK_BOOT,
-        _______, _______, _______, _______, _______, _______,                                         RM_TOGG, RM_SATU, RM_HUEU, RM_VALU, RM_NEXT, _______,
+        _______, _______, _______, VRSN,    _______, _______,                                         RM_TOGG, RM_SATU, RM_HUEU, RM_VALU, RM_NEXT, _______,
         EE_CLR,  _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, RM_SATD, RM_HUED, RM_VALD, RM_PREV, EE_CLR,
                                    _______, _______, _______, _______, _______,     KC_BRID, KC_BRIU, _______, _______, _______
     ),
@@ -210,10 +189,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     }
 };
 
-void keyboard_post_init_user(void) {
-    // Customise these values to desired behaviour
-    debug_enable=true;
-    debug_matrix=true;
-    //debug_keyboard=true;
-    //debug_mouse=true;
-}
+// void keyboard_post_init_user(void) {
+//     // Customise these values to desired behaviour
+//     debug_enable=true;
+//     debug_matrix=true;
+//     //debug_keyboard=true;
+//     //debug_mouse=true;
+// }

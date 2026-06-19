@@ -4,7 +4,7 @@
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 #ifdef CONSOLE_ENABLE
-    uprintf("pru: 0x%04X,%u,%u,%u,%b,0x%02X,0x%02X,%u\n",
+    uprintf("pru => k: 0x%04X, row: %u, col: %u, layer: %u, event: %b, mods: 0x%02X, osm: 0x%02X, tc: %u\n",
          keycode,
          record->event.key.row,
          record->event.key.col,
@@ -14,9 +14,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
          get_oneshot_mods(),
          record->tap.count
     );
-#endif
-#ifdef SELECT_WORD_ENABLE
-    if (!process_select_word(keycode, record, SELWORD)) { return false; }
 #endif
     if (record->event.pressed) {
         switch (keycode) {

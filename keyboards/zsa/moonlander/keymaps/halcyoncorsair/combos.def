@@ -1,4 +1,5 @@
 #include "halcyoncorsair.h"
+//#include "keycode_aliases.h"
 
 //  Layout key reference
 //	KC_Q    KC_W    KC_F    KC_P    KC_B        KC_J    KC_L    KC_U    KC_Y    KC_SCLN

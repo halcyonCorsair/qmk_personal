@@ -21,9 +21,3 @@ COMBO_ENABLE ?= no
 ifeq ($(strip $(COMBO_ENABLE)), yes)
 	SRC += combos.c
 endif
-
-SELECT_WORD_ENABLE ?= no
-ifeq ($(strip $(SELECT_WORD_ENABLE)), yes)
-    SRC += features/select_word.c
-    OPT_DEFS += -DSELECT_WORD_ENABLE
-endif

@@ -1,9 +1,6 @@
 #pragma once
 #include QMK_KEYBOARD_H
 #include "keycode_aliases.h"
-#ifdef SELECT_WORD_ENABLE
-#   include "features/select_word.h"
-#endif
 #ifdef ENCODER_ENABLE
 #   include "encoder_config.h"
 #endif
@@ -14,16 +11,21 @@
 
 enum layers {
     _COLEMAK_DH = 0,
-    _QWERTY,
     _SYM,
     _NAV,
-    _NUM,
-    // _WINMGMT,
     _ADJUST,
-    _LAYER_SAFE_RANGE
+    _LAYER_SAFE_RANGE,
+};
+
+enum qwerty_layers {
+    _Q_COLEMAK_DH = 0,
+    _Q_QWERTY,
+    _Q_SYM,
+    _Q_NAV,
+    _Q_ADJUST,
+    _Q_LAYER_SAFE_RANGE,
 };
 
 enum custom_keycodes {
-    SELWORD = SAFE_RANGE,
-    VRSN,
+    VRSN = SAFE_RANGE,
 };
