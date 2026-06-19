@@ -21,7 +21,7 @@ SELECT_WORD_ENABLE	= no
 # Need to reduce firmware size
 LTO_ENABLE			= yes
 ##
-CONSOLE_ENABLE		= yes
+CONSOLE_ENABLE		= no
 ##
 COMMAND_ENABLE		= no
 MOUSEKEY_ENABLE		= no
