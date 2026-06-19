@@ -1,3 +1,5 @@
+/* Copyright 2026 Elliot Pahl <elliot.pahl@gmail.com>
+ */
 #pragma once
 
 #define TAPPING_TOGGLE 2

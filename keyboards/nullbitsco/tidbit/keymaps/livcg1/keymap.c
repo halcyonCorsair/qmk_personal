@@ -1,3 +1,5 @@
+/* Copyright 2026 Elliot Pahl <elliot.pahl@gmail.com>
+ */
 #include QMK_KEYBOARD_H
 #include "action_layer.h"
 #include "common/remote_kb.h"
