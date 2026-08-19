@@ -16,9 +16,6 @@ bool oled_task_user(void) {
         case _COLEMAK_DH:
             oled_write_P(PSTR("Colemak-DH\n"), false);
             break;
-        case _QWERTY:
-            oled_write_P(PSTR("QWERTY\n"), false);
-            break;
         case _SYM:
             oled_write_P(PSTR("Sym\n"), false);
             break;

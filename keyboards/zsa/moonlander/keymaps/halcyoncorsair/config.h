@@ -22,9 +22,6 @@
 
 #define TAPPING_TERM_PER_KEY // See bottom of keymap.c
 
-// Prevent normal rollover on alphas from accidentally triggering mods.
-#define IGNORE_MOD_TAP_INTERRUPT
-
 // This prevents accidental repeats of the tap-hold keys when typing quickly.
 #define TAPPING_FORCE_HOLD_PER_KEY
 
@@ -32,6 +29,7 @@
 #undef PERMISSIVE_HOLD
 
 // Other settings //
+#define HOLD_ON_OTHER_KEY_PRESS
 #define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 #define TAPPING_TOGGLE 2
@@ -43,12 +41,12 @@
 #define COMBO_ONLY_FROM_LAYER 0
 
 // #define RGB_DISABLE_TIMEOUT 0 // number of milliseconds to wait until rgb automatically turns off
-// #define RGB_MATRIX_STARTUP_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT // Sets the default mode, if none has been set
-#define RGB_MATRIX_STARTUP_VAL 128
-#define RGB_MATRIX_STARTUP_HUE 0
-#define RGB_MATRIX_STARTUP_SAT 255
+// #define RGB_MATRIX_DEFAULT_MODE RGB_MATRIX_CYCLE_LEFT_RIGHT // Sets the default mode, if none has been set
+#define RGB_MATRIX_DEFAULT_VAL 128
+#define RGB_MATRIX_DEFAULT_HUE 0
+#define RGB_MATRIX_DEFAULT_SAT 255
 // #define RGB_DISABLE_WHEN_USB_SUSPENDED true
-#define RGB_MATRIX_STARTUP_SPD 127
+#define RGB_MATRIX_DEFAULT_SPD 127
 
 #define DISABLE_RGB_MATRIX_ALPHAS_MODS
 #define DISABLE_RGB_MATRIX_GRADIENT_UP_DOWN
@@ -95,3 +93,5 @@
 #define DISABLE_RGB_MATRIX_MULTISPLASH
 #define ENABLE_RGB_MATRIX_SOLID_SPLASH
 #define DISABLE_RGB_MATRIX_SOLID_MULTISPLASH
+
+#define SELECT_WORD_OS_MAC

@@ -16,6 +16,9 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "halcyoncorsair.h"
+#ifdef COMBO_ENABLE
+    #include "g/keymap_combo.h"
+#endif
 #ifdef CONSOLE_ENABLED
     #include "print.h"
 #endif
@@ -27,43 +30,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /*
  * Base Layer: Colemak DH
  *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Tab   |   Q  |   W  |   F  |   P  |   B  |                              |   J  |   L  |   U  |   Y  | ;  : |  \  |  |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |  Esc/` |A/Ctrl| R/Alt| S/GUI| T/SFT|   G  |                              |   M  | N/SFT| E/GUI| I/Alt|O/Ctrl|  '  "  |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   D  |   V  |Spotlt|CapsLk|  | 1pass|Adjust|   K  |   H  | ,  < | . >  | /  ? |  -  _  |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |Adjust| Meh  | Nav  | Space| Bksp |  | Tab  | Enter| Sym  |Repeat| Play |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
+ * ,-------------------------------------------.                                 ,-------------------------------------------.
+ * |  Tab   |   Q  |   W  |   F  |   P  |   B  |                                 |   J  |   L  |   U  |   Y  | ;  : |  \  |  |
+ * |--------+------+------+------+------+------|                                 |------+------+------+------+------+--------|
+ * |  Esc/` |A/Ctrl| R/Alt| S/GUI| T/SFT|   G  |                                 |   M  | N/SFT| E/GUI| I/Alt|O/Ctrl|  '  "  |
+ * |--------+------+------+------+------+------+----------------.  ,-------------+------+------+------+------+------+--------|
+ * | LShift |   Z  |   X  |   C  |   D  |   V  |Spotlight|Alfred|  | 1pass|Adjust|   K  |   H  | ,  < | . >  | /  ? |  -  _  |
+ * `----------------------+------+------+------+---------+------|  |------+------+------+------+------+----------------------'
+ *                        |Adjust| Meh  | Nav  | Space   | Bksp |  | Tab  | Enter| Sym  |Repeat| Play |
+ *                        |      |      |      |         |      |  |      |      |      |      |      |
+ *                        `-------------------------------------'  `----------------------------------'
  */
     [_COLEMAK_DH] = LAYOUT(
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,                                            KC_J,    KC_L,    KC_U,    KC_Y,    KC_QUOT           , KC_BSLS,
         KC_ESC,  HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_G,                                            KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
-        OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    SPOTLIGHT,_______,    ONEPASS, ADJUST,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-                                   ADJUST,  KC_MEH,  NAV,     KC_SPC,  KC_BSPC,     KC_TAB,  KC_ENT,  SYM,     REPEAT,  KC_MPLY
-    ),
-
-/*
- * Base Layer: QWERTY
- *
- * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |        |
- * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |A/Ctrl| S/Alt| D/GUI| F/SFT|   G  |                              |   H  | J/SFT| K/GUI| L/Alt|;:/Ctrl|       |
- * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |        |   Z  |   X  |   C  |   V  |   B  |      |      |  |      |      |   N  |   M  | ,  < | . >  | /  ? |        |
- * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
- *                        `----------------------------------'  `----------------------------------'
- */
-    [_QWERTY] = LAYOUT(
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                                            KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSLS,
-        KC_ESC,  HOME_A,  QHOME_S, QHOME_D, QHOME_F, KC_G,                                            KC_H,    QHOME_J, QHOME_K, QHOME_L, QHOME_SCLN,KC_QUOT,
-        OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    _______, _______,     _______, _______, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-                                   _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______
+        OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,    SPOTLIGHT, ALFRED,    ONEPASS, ADJUST,  KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
+                                   ADJUST,  KC_MEH,  NAV,     KC_SPC,  KC_BSPC,     KC_TAB,  KC_ENT,  SYM,     QK_REP,  KC_MPLY
     ),
 
 // NOTE: swap hands is currently not enabled due to memory requirements
@@ -122,9 +104,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                       `----------------------------------'  `----------------------------------'
  */
     [_NAV] = LAYOUT(
-        KC_F13,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,                                         KC_PGUP, MHOME,   KC_UP,   MEND,    KC_VOLU, KC_DEL,
+        KC_F15,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,                                         KC_PGUP, MHOME,   KC_UP,   MEND,    KC_VOLU, KC_DEL,
         KC_F14,  HOME_F5, HOME_F6, HOME_F7, HOME_F8, _______,                                         KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT, KC_VOLD, KC_CAPS,
-        KC_F15,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   PTXT,    _______, _______,     _______, SELWORD, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_INS,
+        KC_F13,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   PTXT,    _______, _______,     _______, SELWORD, XXXXXXX, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_INS,
                                    _______, _______, _______, _______, _______,     _______, KC_BSPC, _______, _______, _______
     ),
 
@@ -132,9 +114,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Adjust Layer: Default layer settings, RGB
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              |      |      |      |      |      | RESET  |
+ * |        |      |      |Kb Reboot|      |Debug|                              |      |      |      |      |      | RESET  |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |      |      |Colmak|QWERTY|      |                              | TOG  | SAI  | HUI  | VAI  | MOD  | DEBUG  |
+ * |        |      |      |Version|     |      |                              | TOG  | SAI  | HUI  | VAI  | MOD  |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |      |  |      |      |      | SAD  | HUD  | VAD  | RMOD |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
@@ -143,9 +125,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_ADJUST] = LAYOUT(
-        RESET,   _______, _______, _______, _______, _______,                                         _______, _______, _______, _______, _______, RESET,
-        DEBUG,   _______, _______, COLEMAK, QWERTY,  _______,                                         RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD, DEBUG,
-        EEP_RST, _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD,EEP_RST,
+        QK_BOOT, _______, _______, QK_RBT,  _______, DB_TOGG,                                         _______, _______, QK_RBT,  _______, _______, QK_BOOT,
+        _______, _______, _______, VRSN,    _______, _______,                                         UG_TOGG, UG_SATU, UG_HUEU, UG_VALU, UG_NEXT, _______,
+        EE_CLR,  _______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, UG_SATD, UG_HUED, UG_VALD, UG_PREV, EE_CLR,
                                    _______, _______, _______, _______, _______,     KC_BRID, KC_BRIU, _______, _______, _______
     ),
 
@@ -194,7 +176,6 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
         case HOME_I:
         case HOME_R:
         case HOME_O:
-        case QHOME_S:
             return TAPPING_TERM + 30;
         case HOME_T:
         case HOME_N:
@@ -206,3 +187,11 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
             return TAPPING_TERM;
     }
 };
+
+// void keyboard_post_init_user(void) {
+//     // Customise these values to desired behaviour
+//     debug_enable=true;
+//     debug_matrix=true;
+//     //debug_keyboard=true;
+//     //debug_mouse=true;
+// }

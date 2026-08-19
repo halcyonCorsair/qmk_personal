@@ -25,62 +25,7 @@
 #include QMK_KEYBOARD_H
 #include "halcyoncorsair.h"
 
-#define COMBOS_DEF "combos.inc"
-
-// Combo code building macros
-#define C_ENUM(name, val, ...) cmb_##name,
-#define C_DATA(name, val, ...) uint16_t const name##_combo[] PROGMEM = {__VA_ARGS__, COMBO_END};
-#define C_TYPE(name, val, ...) [cmb_##name] = COMBO(name##_combo, val),
-#define A_TYPE(name, val, ...) [cmb_##name] = COMBO_ACTION(name##_combo),
-#define P_SSTR(name, val, ...) case cmb_##name: if (pressed) { SEND_STRING(val); } break;
-#define P_ACTN(name, val, ...) case cmb_##name: if (pressed) { val; } break;
-#define UNUSED(...)
-
-// Enumerate combo list with prefixed names
-#undef COMB
-#undef SUBS
-#undef ACTN
-#define COMB C_ENUM
-#define SUBS C_ENUM
-#define ACTN C_ENUM
-enum combos {
-	#include COMBOS_DEF
-	COMBO_LENGTH
-};
-uint16_t COMBO_LEN = COMBO_LENGTH;
-
-// Create combo name array in PROGMEM with key sequences
-#undef COMB
-#undef SUBS
-#undef ACTN
-#define COMB C_DATA
-#define SUBS C_DATA
-#define ACTN C_DATA
-#include COMBOS_DEF
-
-// Fill array with combo type and shortcuts
-#undef COMB
-#undef SUBS
-#undef ACTN
-#define COMB C_TYPE
-#define SUBS A_TYPE
-#define ACTN A_TYPE
-combo_t key_combos[] = {
-	#include COMBOS_DEF
-};
-
-// Fill combo event function with send string or function calls
-#undef COMB
-#undef SUBS
-#undef ACTN
-#define COMB UNUSED
-#define SUBS P_SSTR
-#define ACTN P_ACTN
-void process_combo_event(uint16_t combo_index, bool pressed) {
-	switch (combo_index) {
-		#include COMBOS_DEF
-	}
-}
+// #define COMBOS_DEF "combos.inc"
 
 uint16_t get_combo_term(uint16_t index, combo_t *combo) {
     switch (combo->keycode) {

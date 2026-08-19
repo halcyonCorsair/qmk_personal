@@ -2,7 +2,7 @@
 #include QMK_KEYBOARD_H
 
 // Layer switch aliases
-#define QWERTY   DF(_QWERTY)
+#define QWERTY   DF(_Q_QWERTY)
 #define COLEMAK  DF(_COLEMAK_DH)
 #define SYM      TT(_SYM)
 #define NAV      TT(_NAV)
@@ -88,6 +88,7 @@
 
 // App shortcuts
 #define SPOTLIGHT   LGUI(KC_SPC)
+#define ALFRED      RALT(KC_SPC)
 #define ONEPASS     LAG(KC_BSLS)
 
 #define DIVVY_PANEL MEH(KC_D)

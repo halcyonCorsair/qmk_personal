@@ -20,22 +20,25 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
 #include "halcyoncorsair.h"
+#ifdef COMBO_ENABLE
+    #include "g/keymap_combo.h"
+#endif
 #ifdef CONSOLE_ENABLED
     #include "print.h"
 #endif
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-    [_COLEMAK_DH] = LAYOUT_moonlander(
+    [_Q_COLEMAK_DH] = LAYOUT_moonlander(
         XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    ADJUST,       QWERTY,   KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    XXXXXXX,
         KC_TAB,  KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,    XXXXXXX,      XXXXXXX,  KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN, KC_BSLS,
         KC_ESC,  HOME_A,  HOME_R,  HOME_S,  HOME_T,  KC_G,    KC_HYPR,      KC_MEH,   KC_M,    HOME_N,  HOME_E,  HOME_I,  HOME_O,  KC_QUOT,
         OS_LSFT, KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,                            KC_K,    KC_H,    KC_COMM, KC_DOT,  KC_SLSH, KC_MINS,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NAV,              SPOTLIGHT,    ONEPASS,           SYM,     REPEAT,  XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, NAV,              SPOTLIGHT,    ONEPASS,           SYM,     QK_REP,  XXXXXXX, XXXXXXX, XXXXXXX,
                                             KC_SPC,  KC_BSPC, KC_MEH,       ADJUST,   KC_TAB,  KC_ENT
     ),
 
-    [_QWERTY] = LAYOUT_moonlander(
+    [_Q_QWERTY] = LAYOUT_moonlander(
         _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
         _______, _______, _______, KC_E,    KC_R,    KC_T,    _______,      _______, KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    _______,
         _______, _______, QHOME_S, QHOME_D, QHOME_F, _______, _______,      _______, KC_H,    QHOME_J, QHOME_K, QHOME_L, QHOME_SCLN,_______,
@@ -44,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______,      _______, _______, _______
     ),
 
-    [_SYM] = LAYOUT_moonlander(
+    [_Q_SYM] = LAYOUT_moonlander(
         VRSN,    _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
         KC_GRV,  KC_4,    KC_3,    KC_2,    KC_1,    KC_5,    _______,      _______, KC_9,    KC_0,    KC_6,    KC_7,    KC_8,    _______,
         KC_DEL,  HOME_DLR,HOME_PLUS,HOME_LPRN,HOME_RPRN,KC_AT,_______,      _______, KC_PIPE, HOME_MINS,HOME_EQL,HOME_UNDS,HOME_ASTR,_______,
@@ -53,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                             _______, _______, _______,      _______, _______, _______
     ),
 
-    [_NAV] = LAYOUT_moonlander(
+    [_Q_NAV] = LAYOUT_moonlander(
         _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______,  _______, _______,
         KC_F13,  KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______,      _______, KC_PGUP, MHOME,   KC_UP,   MEND,     KC_VOLU, KC_DEL,
         KC_F14,  HOME_F5, HOME_F6, HOME_F7, HOME_F8, _______, _______,      _______, KC_PGDN, KC_LEFT, KC_DOWN, KC_RIGHT, KC_VOLD, KC_CAPS,
@@ -63,11 +66,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
 
     // TODO: Redefine the divvy shortcuts above
-    [_ADJUST] = LAYOUT_moonlander(
-        WEBUSB_PAIR,_______,_______,_______,_______, _______, _______,      _______, _______, _______, _______, _______, _______, RESET,
-        _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, DEBUG,
-        _______, _______, _______, COLEMAK, QWERTY,  _______, _______,      _______, RGB_TOG, RGB_SAI, RGB_HUI, RGB_VAI, RGB_MOD, _______,
-        _______, _______, _______, _______, _______, _______,                        _______, RGB_SAD, RGB_HUD, RGB_VAD, RGB_RMOD,_______,
+    [_Q_ADJUST] = LAYOUT_moonlander(
+        WEBUSB_PAIR,_______,_______,_______,_______, _______, _______,      _______, _______, _______, _______, _______, _______, QK_BOOT,
+        _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+        _______, _______, _______, COLEMAK, QWERTY,  _______, _______,      _______, RM_TOGG, RM_SATU, RM_HUEU, RM_VALU, RM_NEXT, _______,
+        _______, _______, _______, _______, _______, _______,                        _______, RM_SATD, RM_HUED, RM_VALD, RM_PREV,_______,
         _______, _______, _______, _______, _______,          _______,      _______,          _______, _______, _______, _______, _______,
                                             _______, _______, _______,      _______, KC_BRID, KC_BRIU
     ),

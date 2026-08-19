@@ -6,7 +6,6 @@ COMBO_ENABLE		= yes
 # Userspace features
 MY_CAPS_WORD_ENABLE	= yes
 REPEAT_KEY_ENABLE	= yes	# 276
-SELECT_WORD_ENABLE	= yes
 
 # Need to reduce firmware size
 # LTO_ENABLE			= yes
